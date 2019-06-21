@@ -13,6 +13,16 @@
   margin-top: 1em;
   border: solid 1px black;
   padding: 0.5em;
+  position: relative;
+}
+
+.listings>.sold-notification {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.4s linear;
 }
 
 .listings>div:nth-child(2) {

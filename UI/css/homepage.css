@@ -332,6 +332,7 @@ a {
 .first-div>div>span {
   margin-bottom: 0.2em;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .first-div>div>input {
@@ -342,6 +343,7 @@ a {
   outline: none;
   text-align: center;
   margin-bottom: 1em;
+  font-size: 0.8rem;
 }
 
 .first-div>div>select {

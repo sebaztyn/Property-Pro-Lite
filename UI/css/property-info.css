@@ -1,0 +1,272 @@
+@import './homepage.css';
+.property-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--home-color)
+}
+
+.property-title {
+  text-align: center;
+  width: 70%;
+  margin: 0.5em auto;
+  padding: 1em;
+  background-color: var(--form-color)
+}
+
+.property-information>div:nth-child(2) {
+  width: 70%;
+  height: 300px;
+  padding: 1em;
+  margin: 0 auto;
+  background: var(--form-color)
+}
+
+.property-information>div:nth-child(2)>img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: contain;
+  position: relative;
+}
+
+/* .property-display-container>div:last-child {
+  display: none
+} */
+
+.property-info {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--home-color)
+}
+
+.general-features {
+  width: 70%;
+  background: var(--form-color)
+}
+
+#search-form {
+  padding-bottom: 0;
+}
+
+.property-description {
+  font-weight: bold;
+}
+
+.description {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  box-shadow: 0 0 0.2em 0 black;
+  margin-bottom: 0.5em;
+}
+
+.internal-features {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  box-shadow: 0 0 0.2em 0 black;
+  margin-bottom: 0.5em;
+}
+
+.external-features {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  box-shadow: 0 0 0.2em 0 black;
+  margin-bottom: 0.5em;
+}
+
+.agent-contact {
+  width: 70%;
+  margin: 0.5em auto;
+  text-align: center;
+  padding: 1em 1em;
+  background: darkred;
+  border-radius: 0.2em;
+  border: none;
+  outline: none;
+  color: #fff;
+  text-decoration: none;
+}
+
+.report-advert {
+  width: 70%;
+  margin: 0.5em auto;
+  text-align: center;
+  padding: 1em 1em;
+  background: rgb(255, 154, 0);
+  color: #fff;
+  border-radius: 0.2em;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.agent-contact:hover {
+  cursor: pointer;
+}
+
+.report-advert:hover {
+  cursor: pointer;
+}
+
+.price {
+  padding: 0.5em;
+}
+
+.internal-features>div:first-child {
+  font-weight: bold
+}
+
+.external-features>div:first-child {
+  font-weight: bold
+}
+
+.internal-features>div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em
+}
+
+.contact-form {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  box-shadow: 0 0 0.2em 0 black;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.scam-form {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  box-shadow: 0 0 0.2em 0 black;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.phone-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.email-card {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  align-items: center;
+  margin: auto;
+  text-align: center
+}
+
+.email-card>button {
+  background: #fff;
+  border: solid 1px var(--header-color);
+  color: var(--header-color);
+  padding: 0.5em 5em;
+  outline: none;
+  border: none;
+  margin-bottom: 2em;
+}
+
+.email-card>.submit-request {
+  background: var(--header-color);
+  border: solid 1px var(--header-color);
+  color: #fff;
+  transition: background 0.3s linear, color 0.3s linear;
+}
+
+.email-card>.submit-request:hover {
+  background: #fff;
+  border: solid 1px var(--header-color);
+  color: var(--header-color);
+  cursor: pointer;
+}
+
+.email-card>.submit-fraud {
+  background: darkorange;
+  color: var(--header-color);
+  white-space: pre;
+  padding: 0.5em 4em;
+  transition: background 0.3s linear, color 0.3s linear;
+}
+
+.email-card>.submit-fraud:hover {
+  cursor: pointer;
+  background: rgb(131, 73, 2);
+  color: #fff;
+}
+
+.email-card>p:first-child {
+  font-weight: bold;
+  padding: 0.5em;
+}
+
+.phone-card>p:first-child {
+  font-weight: bold
+}
+
+.email-card>input {
+  width: 80%;
+  outline: none;
+  border: none;
+  align-self: center;
+  padding: 0.5em;
+  background-color: rgb(211, 214, 211);
+}
+
+.email-card>select {
+  width: 80%;
+  outline: none;
+  border: none;
+  align-self: center;
+  padding: 0.5em;
+  background-color: rgb(211, 214, 211);
+}
+
+.email-card>textarea {
+  width: 80%;
+  outline: none;
+  border: none;
+  align-self: center;
+  background-color: rgb(211, 214, 211);
+  margin-bottom: 1em;
+}
+
+hr {
+  margin-bottom: 0.5em;
+}
+
+footer>hr {
+  margin: 0;
+}
+
+.external-features>div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em
+}
+
+.internal-features>div:nth-child(2)>span>i {
+  margin-right: 0.5em;
+  font-size: small
+}
+
+.external-features>div:nth-child(2)>span>i {
+  margin-right: 0.5em;
+  font-size: small
+}
+
+@media(min-width: 30em) {
+  .property-information {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .email-card {
+    width: 90%;
+  }
+}

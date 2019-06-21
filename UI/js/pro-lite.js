@@ -18,6 +18,7 @@ const signUpButton = document.querySelector('#signup-button');
 const loginButton = document.querySelector('.login-submit-button');
 const propertyListContainer = document.querySelector('.property-display-container')
 const mainFormSubmitButton=document.querySelector('.main-form-submit-button');
+const editProperty = document.querySelector('.listings>div:nth-child(2)>span:first-child');
 
 
 
@@ -104,6 +105,9 @@ if (dashboardProfile) dashboardProfile.addEventListener('click', (event)=> {
   location.href='signup.html';
 });
  if (listPropertyLink) listPropertyLink.addEventListener('click', ()=> {
+  location.href='listproperty.html';
+});
+if (editProperty) editProperty.addEventListener('click', ()=> {
   location.href='listproperty.html';
 });
 if (signUpButton) signUpButton.addEventListener('click', ()=> {

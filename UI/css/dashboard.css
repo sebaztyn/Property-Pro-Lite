@@ -1,0 +1,63 @@
+@import "./homepage.css";
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  min-height: 88vh;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.dashboard>div:not(.dashboard-buttons) {
+  cursor: pointer;
+  background-color: #fff;
+  transition: background 0.5s linear;
+}
+
+.dashboard>div:not(.dashboard-buttons):hover {
+  background-color: gray;
+  color: #fff;
+}
+
+.dashboard-buttons {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  padding: 1em;
+}
+
+.dashboard-buttons>span {
+  padding: 0.7em 2em;
+  background-color: gray;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dashboard-buttons>span:hover {
+  background-color: gray;
+}
+
+.dashboard-my-list {
+  flex: 1;
+  margin: 1em;
+  padding: 1em;
+  border: solid black 1px;
+}
+
+.dashboard-property-request {
+  flex: 1;
+  margin: 1em;
+  padding: 1em;
+  border: solid black 1px;
+}
+
+.dashboard-property-request>span {
+  display: block;
+}
+
+.dashboard-my-profile {
+  flex: 1;
+  margin: 1em;
+  padding: 1em;
+  border: solid black 1px;
+}

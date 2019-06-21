@@ -1,0 +1,381 @@
+@import './styles.css';
+:root {
+  box-sizing: border-box;
+  font-size: calc(1vw + 0.4em);
+  --header-color: #021C1E;
+  --header-shade: #004445;
+  --lighter-color: #2c7873;
+  --hover-color: hsl(0, 0%, 90%);
+  --hover-background: #206566;
+  --form-colors: hsl(0, 0%, 90%);
+  scroll-behavior: smooth;
+  color: var(--header-color);
+  font-family: sans-serif
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+}
+
+header {
+  background-color: var(--header-color);
+  color: var( --form-colors);
+  height: 12vh;
+  padding: 0.5em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+header>.logo {
+  margin: 0 auto;
+  height: 100%;
+  display: inline-flex;
+}
+
+header>.logo>a {
+  display: flex;
+  text-decoration: none;
+  height: 100%;
+  justify-content: center;
+}
+
+.logo>a>img {
+  border-radius: 20%;
+  padding-top: 0.1%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo>a>span {
+  display: inline-block;
+  color: white;
+  transform: translateY(40%);
+  white-space: nowrap;
+  padding-left: 0.1em;
+}
+
+#hamburger {
+  display: block;
+  position: absolute;
+  top: 30%;
+  right: 2%;
+  z-index: 2;
+  user-select: none;
+}
+
+#hamburger input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 4;
+  padding: 0.5em;
+  color: var(--form-colors);
+}
+
+.gallery-in {
+  display: none;
+}
+
+.navbar {
+  margin: 0;
+  list-style: none;
+  background-color: var(--header-shade);
+  color: var(--form-colors);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5em;
+  display: none;
+  text-transform: uppercase
+}
+
+.navbar>li {
+  list-style: none;
+  background-color: var(--header-shade);
+  display: flex;
+}
+
+.navbar>li>a {
+  text-decoration: none;
+  color: var(--form-colors);
+  padding: 1em;
+  display: block;
+  width: 100%
+}
+
+.navbar>li:hover {
+  background-color: var(--hover-background);
+  color: var(--hover-color);
+  cursor: pointer;
+}
+
+.navbar-in>.signout-navbar-one,
+.navbar>.signout-navbar-two,
+.navbar>.dashboard-two,
+.navbar>.dashboard-one {
+  display: none;
+}
+
+#hamburger span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  background-color: var(--form-colors);
+  transform-origin: 4px 0px;
+  transition: transform 0.1s linear, background 0.1s linear, opacity 0.1s linear;
+}
+
+#hamburger span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#hamburger span:nth-last-child(1) {
+  transform-origin: 0% 100%;
+}
+
+#hamburger input:checked~span {
+  opacity: 1;
+  transform: rotate(-45deg) translate(0, 2px);
+  background: var(--form-colors);
+}
+
+#hamburger input:checked~span:nth-last-child(3) {
+  transform: rotate(45deg) translate(0, 0);
+  background: var(--form-colors);
+}
+
+#hamburger input:checked~span:nth-last-child(2) {
+  opacity: 0;
+  transform: translateX(-5px);
+}
+
+#hamburger input:checked~ul {
+  opacity: 0;
+  transform: translateX(-5px);
+}
+
+.signup-form {
+  text-align: center;
+  padding: 2em 1em;
+  border: solid 0.5em var(--header-color);
+  width: 85%;
+  margin: 2em auto;
+}
+
+.signup-form>div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+  text-align: start;
+}
+
+.signup-form>p:first-child {
+  margin-bottom: 1em;
+}
+
+.signup-form>div>p {
+  text-align: start;
+  margin-bottom: 0.2em;
+  text-transform: uppercase
+}
+
+.signup-form>div>p>span {
+  padding-left: 0.1em;
+  color: red
+}
+
+.signup-form>div>input {
+  border: solid 1px var(--header-color);
+  background-color: var(--form-colors);
+  padding: 0.5em;
+  outline: none;
+}
+
+#signup-button {
+  border: none;
+  padding: 0.6em 0;
+  outline: none;
+  text-transform: uppercase;
+  background-color: var(--header-shade);
+  color: var(--form-colors);
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+
+.user-type>input {
+  margin-left: 0.3em
+}
+
+a {
+  color: #6fb98f
+}
+
+#hamburger.property-form {
+  right: 88%;
+}
+
+footer {
+  background-color: #fff;
+}
+
+footer>p {
+  padding: 0.5em;
+  background-color: var(--form-colors);
+  color: var(--header-color);
+  text-align: center;
+  margin: 0;
+}
+
+footer>h4 {
+  padding-top: 1em;
+  color: var(--header-color);
+  text-align: center;
+  margin: 0;
+}
+
+footer>div {
+  background: var(--header-color);
+  padding: 1em;
+  text-align: center;
+  word-break: break-all;
+}
+
+footer>div>i {
+  color: var(--form-colors)
+}
+
+footer>div:last-child {
+  color: var(--form-colors);
+}
+
+footer>div:last-child>div {
+  padding: 1em
+}
+
+footer>div:last-child>div>a {
+  text-decoration: none;
+  padding: 0 0.5em
+}
+
+footer>div:last-child>p {
+  padding: 1em;
+  font-size: small
+}
+
+footer>div>span {
+  color: var(--form-colors);
+  text-align: center;
+  padding: 0.5em;
+}
+
+hr {
+  margin: 0;
+}
+
+@media(min-width: 30em) {
+  .signup-form {
+    width: 40%;
+  }
+  #hamburger.property-form {
+    right: 92%;
+  }
+  .login-form {
+    width: 40%;
+  }
+  .gallery-in {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-flex;
+    height: 100%;
+    width: 70%;
+    padding: 0.5em
+  }
+  .navbar {
+    display: none !important;
+  }
+  .navbar-in {
+    list-style: none;
+    flex-direction: row;
+    display: inline-flex !important;
+    background: none;
+    justify-content: flex-start;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+  }
+  .navbar-in>li {
+    padding: 0;
+    flex: 1;
+    text-align: center;
+    font-weight: normal;
+    color: var(--lighter-colors);
+    min-width: 0;
+    min-height: 0;
+    transition: background 0.4s linear;
+  }
+  .navbar-in>li>a {
+    padding: 1em;
+    text-decoration: none;
+    color: var(--form-colors);
+  }
+  .navbar-in>li>a:hover {
+    background-color: var(--hover-background);
+    color: var(--hover-color);
+    cursor: pointer;
+  }
+  header>.logo {
+    margin: 0;
+    min-height: 0;
+    width: 30%;
+    justify-content: space-around;
+  }
+  header>.logo>a {
+    justify-content: center;
+  }
+  header>.logo>a>span {
+    flex: 1;
+    white-space: nowrap;
+  }
+  .navbar>li {
+    flex: 1;
+    text-align: center;
+    padding: 0.5em;
+    text-transform: initial;
+    font-weight: normal;
+    height: 100%;
+  }
+  #hamburger {
+    display: none;
+  }
+  .navbar-in>.list-property {
+    flex: 2
+  }
+  #hamburger input {
+    display: none !important;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+}
+
+@media(min-width: 50em) {
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+  }}

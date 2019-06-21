@@ -19,7 +19,7 @@ const loginButton = document.querySelector('.login-submit-button');
 const propertyListContainer = document.querySelector('.property-display-container')
 const mainFormSubmitButton=document.querySelector('.main-form-submit-button');
 const editProperty = document.querySelector('.listings>div:nth-child(2)>span:first-child');
-const markSold = document.querySelector('.my-list-body');
+const markElementParent = document.querySelector('.my-list-body');
 
 
 
@@ -111,9 +111,14 @@ if (dashboardProfile) dashboardProfile.addEventListener('click', (event)=> {
 if (editProperty) editProperty.addEventListener('click', ()=> {
   location.href='listproperty.html';
 });
-if (markSold) markSold.addEventListener('click', (event) => {
+if (markElementParent) markElementParent.addEventListener('click', (event) => {
   if (event.target.matches('.listings>div:nth-child(2)>span:nth-child(3)')) {
     event.target.parentElement.nextElementSibling.style.opacity = 1;
+  }
+});
+if (markElementParent) markElementParent.addEventListener('click', (event) => {
+  if (event.target.matches('.listings>div:nth-child(2)>span:nth-child(2)')) {
+    event.target.parentElement.parentElement.style.display = 'none';
   }
 });
 if (signUpButton) signUpButton.addEventListener('click', ()=> {

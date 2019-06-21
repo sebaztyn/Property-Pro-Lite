@@ -16,6 +16,11 @@
   position: relative;
 }
 
+.listings>div:first-child {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
 .listings>.sold-notification {
   position: absolute;
   top: 3px;
@@ -27,7 +32,11 @@
 
 .listings>div:nth-child(2) {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.listings>div:nth-child(2)>div {
+  white-space: pre;
 }
 
 .listings>div:nth-child(2)>span {

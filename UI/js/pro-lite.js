@@ -42,9 +42,9 @@ window.addEventListener('mouseup', (event) => {
 let nextScore = 0;
 if (previousButton) previousButton.addEventListener('click', (event) => {
   if (nextScore === 2) {
-    thirdDivForm.style.left = '100%';
+    thirdDivForm.style.left = '100vw';
     secondDivForm.style.left = '0';
-    firstDivForm.style.left = '-100%';
+    firstDivForm.style.left = '-100vw';
     nextButton.style.display = 'inline';
     mainFormSubmitButton.style.display = 'none';
     thirdDivForm.style.opacity = '0';
@@ -52,8 +52,8 @@ if (previousButton) previousButton.addEventListener('click', (event) => {
     nextScore -= 1;
   }
   else if (nextScore === 1) {
-    thirdDivForm.style.left = '200%';
-    secondDivForm.style.left = '100%';
+    thirdDivForm.style.left = '200vw';
+    secondDivForm.style.left = '100vw';
     firstDivForm.style.left = '0';
     nextScore -= 1;
     previousButton.style.display = 'none';
@@ -63,17 +63,17 @@ if (previousButton) previousButton.addEventListener('click', (event) => {
 });
 if (nextButton) nextButton.addEventListener('click', (event) => {
   if (nextScore === 0) {
-    firstDivForm.style.left = '-100%';
+    firstDivForm.style.left = '-100vw';
     secondDivForm.style.left = '0';
     secondDivForm.style.opacity = '1';
-    thirdDivForm.style.left = '100%';
+    thirdDivForm.style.left = '100vw';
     nextScore += 1;
     previousButton.style.display = 'inline';
     firstDivForm.style.opacity = '0';
   }
   else if (nextScore === 1) {
-    firstDivForm.style.left = '-200%';
-    secondDivForm.style.left = '-100%';
+    firstDivForm.style.left = '-200vw';
+    secondDivForm.style.left = '-100vw';
     thirdDivForm.style.left = '0';
     mainFormSubmitButton.style.display = 'inline';
     nextButton.style.display = 'none';

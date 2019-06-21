@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Property Pro-Lite</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="../img/pro_logo.png" alt="">
+          <span>PRO-LITE</span>
+        </a>
+      </div>
+      <div id="hamburger"><input type="checkbox"><span></span><span></span><span></span></div>
+      <nav class="gallery-in">
+        <ul class="navbar-in">
+          <li>
+            <a href="#">
+              For Sale
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              For Rent
+            </a>
+          </li>
+          <li class="list-property">
+            <a href="listproperty.html">
+              List Property
+            </a>
+          </li>
+          <li class="dashboard-one">
+            <a href="dashboard.html">
+              Dashboard
+            </a>
+          </li>
+          <li class="login-navbar-one">
+            <a href="login.html">
+              Login
+            </a>
+          </li>
+          <li class="signup-navbar-one">
+            <a href="signup.html">
+              Sign Up
+            </a>
+
+          </li>
+          <li class="signout-navbar-one">
+            <a href="#">
+              Sign Out
+            </a>
+
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <ul class="navbar">
+      <li>
+        <a href="#">
+          For Sale
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          For Rent
+        </a>
+      </li>
+      <li class="list-property">
+        <a href="listproperty.html">
+          List Property
+        </a>
+      </li>
+      <li class="dashboard-two">
+        <a href="dashboard.html">
+          Dashboard
+        </a>
+      </li>
+      <li class="login-navbar-two">
+        <a href="login.html">
+          Login
+        </a>
+      </li>
+      <li class="signup-navbar-two">
+        <a href="signup.html">
+          Sign Up
+        </a>
+
+      </li>
+      <li class="signout-navbar-two">
+        <a href="#">
+          Sign Out
+        </a>
+
+      </li>
+    </ul>
+    <div id="display-image">
+      <h2>own a home</h2>
+      <p>Search through for property matching any taste</p>
+      <div id="search-form">
+        <select name="property-category">
+          <option value="" selected disabled>Property Category</option>
+          <option value="buy">BUY</option>
+          <option value="rent">RENT</option>
+          <option value="short-let">SHORT LET</option>
+        </select>
+        <select name="property-type">
+          <option value="" selected disabled>Property Type</option>
+          <option value="offices">offices</option>
+          <option value="shops">shops</option>
+          <option value="warehouses">warehouses</option>
+          <option value="commercial-property">commercial property</option>
+          <option value="flats/apartments">flats/apartments</option>
+          <option value="flat-blocks">flat-blocks</option>
+          <option value="mini-flat">mini-flat</option>
+          <option value="rooms/boys-quarters">rooms/boys-quarters</option>
+          <option value="duplex">duplex</option>
+          <option value="terraces">terraces</option>
+          <option value="townhouses">townhouses</option>
+          <option value="land">land</option>
+        </select>
+        <select name="bedroom">
+          <option value="" selected disabled>Number of Bedrooms</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="more">more</option>
+        </select>
+        <button>SEARCH</button>
+      </div>
+    </div>
+    <main class="property-display-container">
+      <div class="rent-card">
+        <a class="previous-arrow fa fa-arrow-left"></a>
+        <div class="display-rent" data-property_id="1" name='rent-1'>
+          <div>
+            <img src="../img/lindenst01.jpg" alt="first-image" data-image_num="1">
+          </div>
+          <div class="property-detail-card">
+            <p>
+              A 3-bedroom flat fully ensuite. A serene environment. Adequate Security
+            </p>
+            <p>Property Location</p>
+            <p>2000000</p>
+          </div>
+          <button class="view-property">View Property</button>
+        </div>
+        <div class="display-rent" data-property_id="1" name='rent-1'>
+          <div>
+            <img
+              src="../img/room-colour-painting-ideas-beautiful-girls-room-paint-ideas-color-of-room-colour-painting-ideas.jpg"
+              alt="first-image" data-image_num="1">
+          </div>
+          <div class="property-detail-card">
+            <p>A 3-bedroom flat fully ensuite.
+            </p>
+            <p>Property Location</p>
+            <p>4200000</p>
+          </div>
+          <button class="view-property">View Property</button>
+        </div>
+        <div class="display-rent" data-property_id="2" name='rent-2'>
+          <div>
+            <img src="../img/New-Apartments.jpg" alt="second-image" data-image_num="2">
+          </div>
+          <div class="property-detail-card">
+            <p>Property Title</p>
+            <p>Property Location</p>
+            <p>500,000</p>
+          </div>
+          <button class="view-property">View Property</button>
+        </div>
+        <div class="display-rent" data-property_id="3" name='rent-3'>
+          <div>
+            <img src="../img/hotel-1979406_1920.jpg" alt="third-image" data-image_num="3">
+          </div>
+          <div class="property-detail-card">
+            <p>Property Title</p>
+            <p>Property Location</p>
+            <p>Property price</p>
+          </div>
+          <button class="view-property">View Property</button>
+        </div>
+        <a class="next-arrow fa fa-arrow-right"></a>
+      </div>
+      <div class="sale-card">
+        <a href="#" class="next-arrow fa fa-arrow-right"></a>
+        <div class="display-sale" data-property_id="1" name='1'>
+          <div>
+            <img src="../img/interior-design-332212_1920.jpg" alt="Fourth Image" data-image_num="1">
+          </div>
+          <div class="property-detail-card">
+            <p>Property Title</p>
+            <p>Property Location</p>
+            <p>Property price</p>
+
+          </div>
+          <button class="view-property">View Property</button>
+        </div>
+        <a href="" class="previous-arrow fa fa-arrow-left"></a>
+      </div>
+
+      <div class="short-let-card">
+        <a href="" class="next-arrow fa fa-arrow-right"></a>
+        <div class="display-let" data-property_id="1" name='1'>
+          <div>
+            <img src="../img/New-Apartments.jpg" alt="third-image" data-image_num="1">
+          </div>
+          <div class="property-detail-card">
+            <p>Property Title</p>
+            <p>Property Location</p>
+            <p>Price: 2000000</p>
+          </div>
+          <button class="view-property">View Property</button>
+        </div>
+        <a href="" class="previous-arrow fa fa-arrow-left"></a>
+      </div>
+    </main>
+    <footer>
+      <h4>
+        About Pro-Lite
+      </h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <div>
+        <span>Pro-Lite Group</span>
+        <span>Blog</span>
+        <span>About Us</span>
+        <span>Contact Us</span>
+        <span>Terms and Conditions</span>
+        <span>Agents</span>
+        <span>SiteMap</span>
+        <span>Advertise With Us</span>
+        <span>Partners</span>
+      </div>
+      <hr>
+      <div>
+        <p class="login-footer">
+          &#169 2019 Property Pro Lite. All Rights Reserved
+        </p>
+        <div>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="../js/pro-lite.js"></script>
+</body>
+
+</html>

@@ -8,11 +8,11 @@ const today = new Date().toLocaleDateString(undefined, {
 });
 const userDataStore = [
   {
-    id: 1,
+    id: 5,
     email: 'sebastinocj@yahoo.com',
     first_name: 'Chima',
     last_name: 'Ekeneme',
-    password: 'kluej',
+    password: 'Qwertyuiop1!',
     phoneNumber: '08032626214',
     address: 'Gwarinpa, Abuja',
     isAdmin: true
@@ -69,6 +69,10 @@ class Users {
       first_name,
       last_name
     };
+  }
+
+  static findAllUsers() {
+    return userDataStore;
   }
 }
 

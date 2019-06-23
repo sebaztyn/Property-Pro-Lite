@@ -9,6 +9,10 @@ const signupSchema = Joi.object().keys({
   phoneNumber: Joi.string().required(),
   address: Joi.string().required()
 });
+const loginSchema = Joi.object().keys({
+  password: Joi.required(),
+  email: Joi.string().email().regex(/^\S+@\S+\.\S+$/).required()
+});
 
 const errorMessage = (err, res) => {
   const errMessage = err.details[0].message;
@@ -36,6 +40,19 @@ const validation = {
       });
     }
     return serverResponse(res, 422, 'status', 'error', 'error', 'Invalid password length or values');
+  },
+  loginValidator(req, res, next) {
+    let { email, password } = req.body;
+    email = email.toLowerCase().trim();
+    password = password.trim();
+    req.body.email = email;
+    req.body.password = password;
+    return Joi.validate(req.body, loginSchema, (err, value) => {
+      if (err) {
+        return errorMessage(err, res);
+      }
+      return next();
+    });
   }
 };
 

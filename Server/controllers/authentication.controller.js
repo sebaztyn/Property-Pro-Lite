@@ -39,7 +39,7 @@ const login = async (req, res) => {
     }
     const token = generateToken(displayResult);
     displayResult.token = token;
-    return userResponse(res, 201, displayResult);
+    return userResponse(res, 200, displayResult);
   } catch (err) {
     return serverError(res);
   }

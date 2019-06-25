@@ -57,7 +57,7 @@ describe('TESTING AUTHENTICATION ENDPOINTS', () => {
       })
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.status).to.equal(201);
+        expect(res.status).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body).to.haveOwnProperty('status');
         expect(res.body).to.haveOwnProperty('status').that.is.a('string');
@@ -121,7 +121,29 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
           done(err);
         }
         expect(res.body).to.have.keys('status', 'data');
-        expect(res.status).to.equal(201);
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('success');
+        expect(res.body).to.have.ownProperty('data').to.be.an('object');
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.type).to.be.a('string');
+        expect(res.body.data.city).to.be.a('string');
+        expect(res.body.data.address).to.be.a('string');
+        expect(res.body.data.image_url).to.be.a('string');
+        expect(res.body.data.price).to.be.a('number');
+        done();
+      });
+  });
+  it('should update property advert as Sold', (done) => {
+    chai.request(server)
+      .patch('/api/v1/property/3/sold')
+      .set('Authorization', `Bearer ${testToken}`)
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.body).to.have.keys('status', 'data');
+        expect(res.status).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.ownProperty('status').that.equals('success');
         expect(res.body).to.have.ownProperty('data').to.be.an('object');

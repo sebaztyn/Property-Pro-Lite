@@ -102,7 +102,7 @@
   </ul>
 
   <main class="main-form">
-    <div>
+    <form method="POST" enctype="multipart/form-data">
       <div class="first-div">
         <p>Address of property</p>
         <div>
@@ -194,10 +194,10 @@
       </div>
       <div class="third-div">
         <p>Property Image Upload</p>
-        <input type="file"><br>
-        <input type="submit" value="Upload">
+        <input type="file" accept=".jpg, .jpeg, .png"><br>
+        <input type="submit" value="Upload" formenctype="multipart/form-data">
       </div>
-    </div>
+    </form>
     <div class="buttons-div"><span>Previous</span><span class="next-button">Next</span><span
         class="main-form-submit-button">Submit</span>
     </div>

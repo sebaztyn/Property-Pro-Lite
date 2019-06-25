@@ -17,7 +17,6 @@ class Property {
     const {
       owner, price, state, city, address, type, image_url
     } = prop;
-
     const propLength = this.propertyList.length;
     const lastPropID = this.propertyList[propLength - 1].id;
     prop.id = lastPropID + 1;
@@ -46,8 +45,17 @@ class Property {
       price,
       created_on: today,
       image_url
-
     };
+  }
+
+  findAllUsers() {
+    return this.propertyList;
+  }
+
+  updateAdvert(propObj, propId) {
+    this.propertyList.splice(propId, 1, propObj);
+    console.log(this.propertyList);
+    return this.propertyList;
   }
 }
 

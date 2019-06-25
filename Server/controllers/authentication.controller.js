@@ -1,5 +1,4 @@
 // user authentication
-import 'dotenv/config';
 import userObj from '../models/users.model';
 import { encryptPassword, decryptPassword } from '../helper/encrypt';
 import { serverError, userResponse, serverResponse } from '../helper/serverResponse';

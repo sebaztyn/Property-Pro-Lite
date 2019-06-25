@@ -40,8 +40,7 @@ const updateAdvert = async (req, res) => {
     }
     const propId = Number(req.params.propertyId);
     const propArray = propertyObj.findAllUsers();
-    const propToUpdate = propArray.filter(property => property.id === propId);
-    const propertyData = propToUpdate[0];
+    const propertyData = propArray.find(property => property.id === propId);
     const propIndex = propArray.findIndex(property => property.id === propId);
     const {
       state, city, address, type, price
@@ -53,10 +52,24 @@ const updateAdvert = async (req, res) => {
     propertyData.image_url = (propertyData.image_url === image_url) ? propertyData.image_url : image_url;
     propertyData.type = (propertyData.type === type) ? propertyData.type : type;
     propertyObj.updateAdvert(propertyData, propIndex);
-    return serverResponse(res, 201, 'status', 'success', 'data', propertyData);
+    return serverResponse(res, 200, 'status', 'success', 'data', propertyData);
   } catch (err) {
     return serverError(res);
   }
 };
 
-export { postAdvert, updateAdvert };
+const markSold = (req, res) => {
+  try {
+    const id = Number(req.params.propertyId);
+    const propArray = propertyObj.findAllUsers();
+    const propToUpdate = propArray.find(property => property.id === id);
+    const propIndex = propArray.findIndex(property => property.id === id);
+    propToUpdate.status = 'sold';
+    propertyObj.updateAdvert(propToUpdate, propIndex);
+    return serverResponse(res, 200, 'status', 'success', 'data', propToUpdate);
+  } catch (err) {
+    return serverError(res);
+  }
+};
+
+export { postAdvert, updateAdvert, markSold };

@@ -54,7 +54,6 @@ class Property {
 
   updateAdvert(propObj, propId) {
     this.propertyList.splice(propId, 1, propObj);
-    console.log(this.propertyList);
     return this.propertyList;
   }
 }

@@ -72,4 +72,20 @@ const markSold = (req, res) => {
   }
 };
 
-export { postAdvert, updateAdvert, markSold };
+const deleteAdvert = (req, res) => {
+  try {
+    const id = Number(req.params.propertyId);
+    const propToDelete = propertyObj.deleteProp(id);
+    if (propToDelete) {
+      return serverResponse(res, 200, 'status', 'success', 'data', { message: 'Advert deleted Successfully' });
+    }
+    return serverResponse(res, 404, 'status', 'error', 'error', 'Advert not found. Advert may have been removed');
+
+  } catch (err) {
+    return serverError(res);
+  }
+};
+
+export {
+  postAdvert, updateAdvert, markSold, deleteAdvert
+};

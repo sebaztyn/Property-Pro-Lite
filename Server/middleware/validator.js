@@ -9,6 +9,13 @@ const signupSchema = Joi.object().keys({
   phoneNumber: Joi.string().required(),
   address: Joi.string().required()
 });
+const propertySchema = Joi.object().keys({
+  price: Joi.number().required(),
+  state: Joi.string().required(),
+  city: Joi.string().required(),
+  type: Joi.string().required(),
+  address: Joi.string().required()
+});
 const loginSchema = Joi.object().keys({
   password: Joi.required(),
   email: Joi.string().email().regex(/^\S+@\S+\.\S+$/).required()
@@ -19,41 +26,50 @@ const errorMessage = (err, res) => {
   return serverResponse(res, 422, 'status', 'error', 'error', errMessage);
 };
 
-const validation = {
-  signupValidator(req, res, next) {
-    const { password } = req.body;
-    let { email } = req.body;
-    email = email.toLowerCase().trim();
-    req.body.email = email;
-    const minMaxLength = /^[\s\S]{8,255}$/;
-    const uppercaseRegex = /[A-Z]/;
-    const lowercaseRegex = /[a-z]/;
-    const numberRegex = /[0-9]/;
-    const specialCharacterRegex = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
-
-    if (minMaxLength.test(password) && uppercaseRegex.test(password) && lowercaseRegex.test(password) && numberRegex.test(password) && specialCharacterRegex.test(password)) {
-      return Joi.validate(req.body, signupSchema, (err, value) => {
-        if (err) {
-          return errorMessage(err, res);
-        }
-        return next();
-      });
-    }
-    return serverResponse(res, 422, 'status', 'error', 'error', 'Invalid password length or values');
-  },
-  loginValidator(req, res, next) {
-    let { email, password } = req.body;
-    email = email.toLowerCase().trim();
-    password = password.trim();
-    req.body.email = email;
-    req.body.password = password;
-    return Joi.validate(req.body, loginSchema, (err, value) => {
+const signupValidator = (req, res, next) => {
+  const { password } = req.body;
+  let { email } = req.body;
+  email = email.toLowerCase().trim();
+  req.body.email = email;
+  const minMaxLength = /^[\s\S]{8,255}$/;
+  const uppercaseRegex = /[A-Z]/;
+  const lowercaseRegex = /[a-z]/;
+  const numberRegex = /[0-9]/;
+  const specialCharacterRegex = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
+  if (minMaxLength.test(password) && uppercaseRegex.test(password) && lowercaseRegex.test(password) && numberRegex.test(password) && specialCharacterRegex.test(password)) {
+    return Joi.validate(req.body, signupSchema, (err, value) => {
       if (err) {
         return errorMessage(err, res);
       }
       return next();
     });
   }
+  return serverResponse(res, 422, 'status', 'error', 'error', 'Invalid password length or values');
+};
+const loginValidator = (req, res, next) => {
+  let { email, password } = req.body;
+  email = email.toLowerCase().trim();
+  password = password.trim();
+  req.body.email = email;
+  req.body.password = password;
+  return Joi.validate(req.body, loginSchema, (err, value) => {
+    if (err) {
+      return errorMessage(err, res);
+    }
+    return next();
+  });
+};
+const propertyValidator = (req, res, next) => {
+  let { price } = req.body;
+  price = Number(price);
+  req.body.price = price;
+
+  return Joi.validate(req.body, propertySchema, (err, value) => {
+    if (err) {
+      return errorMessage(err, res);
+    }
+    return next();
+  });
 };
 
-export default validation;
+export { propertyValidator, signupValidator, loginValidator };

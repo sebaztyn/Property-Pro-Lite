@@ -1,53 +1,17 @@
-
-const today = new Date().toLocaleDateString(undefined, {
-  day: 'numeric',
-  month: 'short',
-  year: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit'
-});
-const userDataStore = [
-  {
-    id: 5,
-    email: 'sebastinocj@yahoo.com',
-    first_name: 'Chima',
-    last_name: 'Ekeneme',
-    password: 'Qwertyuiop1!',
-    phoneNumber: '08032626214',
-    address: 'Gwarinpa, Abuja',
-    isAdmin: true
-  },
-  {
-    id: 2,
-    email: 'sebtecc@yahoo.com',
-    first_name: 'Uche',
-    last_name: 'Ekeneme',
-    password: 'sebastine',
-    phoneNumber: '08058070709',
-    address: 'Gwarinpa, Abuja',
-    isAdmin: false
-  }
-];
-const propertyData = [
-  {
-    id: 1,
-    createdOn: today,
-    subject: 'Are you Available',
-    message: 'Can we meetup at Andela Towers?',
-    parentMessageId: 1,
-    status: 'draft'
-  }
-];
-
+import allData from '../utils/allData';
 
 class Users {
-  static addUser(user) {
+  constructor() {
+    this.userList = allData.userData;
+  }
+
+  addUser(user) {
     const {
       email, first_name, last_name, password, address, phoneNumber
     } = user;
 
-    const userLength = userDataStore.length;
-    const lastUserID = userDataStore[userLength - 1].id;
+    const userLength = this.userList.length;
+    const lastUserID = this.userList[userLength - 1].id;
     user.id = lastUserID + 1;
 
     const newUser = {
@@ -61,7 +25,7 @@ class Users {
       isAdmin: false
     };
 
-    userDataStore.push(newUser);
+    this.userList.push(newUser);
 
     return {
       id: newUser.id,
@@ -71,9 +35,9 @@ class Users {
     };
   }
 
-  static findAllUsers() {
-    return userDataStore;
+  findAllUsers() {
+    return this.userList;
   }
 }
 
-export default Users;
+export default new Users();

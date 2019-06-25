@@ -9,6 +9,7 @@ const router = Router();
 
 router.post('/', checkToken, cloudinaryConfig, multerUploads, propertyValidator, postAdvert);
 router.patch('/:propertyId', checkToken, cloudinaryConfig, multerUploads, propertyValidator, updateAdvert);
+router.patch('/:propertyId/sold', checkToken, updateAdvert);
 
 
 export default router;

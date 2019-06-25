@@ -1,6 +1,6 @@
 import express from 'express';
-import authenticationRouter from './routes/authentication.routes';
-import propertyRouter from './routes/property.routes';
+import authenticationRouter from './Routes/authentication.routes';
+import propertyRouter from './Routes/property.routes';
 
 
 const app = express();

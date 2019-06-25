@@ -56,6 +56,16 @@ class Property {
     this.propertyList.splice(propId, 1, propObj);
     return this.propertyList;
   }
+
+  deleteProp(id) {
+    const propArr = this.propertyList;
+    const propIndex = propArr.findIndex(property => property.id === id);
+    if (propIndex > -1) {
+      propArr.splice(propIndex, 1);
+      return true;
+    }
+    return false;
+  }
 }
 
 

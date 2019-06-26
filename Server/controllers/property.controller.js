@@ -99,7 +99,8 @@ const getAllAdverts = (req, res) => {
       const user = allUsers.find(each => each.id === ownerID);
       advert.ownerEmail = user.email;
       advert.ownerPhoneNumber = user.phoneNumber;
-      return advert;
+      const { owner, ...finalResult } = advert;
+      return finalResult;
     });
     if (req.query.type) {
       const { type } = req.query;
@@ -108,14 +109,30 @@ const getAllAdverts = (req, res) => {
         return serverResponse(res, 200, 'status', 'success', 'data', queryResult);
       }
       return serverResponse(res, 404, 'status', 'error', 'error', 'No result found. Enter a valid value and try again.');
-
-
     }
     return serverResponse(res, 200, 'status', 'success', 'data', finalList);
   } catch (err) {
     return serverError(res);
   }
 };
+
+const getOneAdvert = (req, res) => {
+  try {
+    const id = Number(req.params.propertyId);
+    const result = propertyObj.findOne(id);
+    if (!result) return serverResponse(res, 404, 'status', 'error', 'error', 'No result found. Enter a valid value and try again.');
+    const advertOwnerID = result.owner;
+    const userList = userObj.findAllUsers();
+    const advertOwner = userList.find(user => user.id === advertOwnerID);
+    result.ownerEmail = advertOwner.email;
+    result.ownerPhoneNumber = advertOwner.phoneNumber;
+    const { owner, ...finalResult } = result;
+    return serverResponse(res, 200, 'status', 'success', 'data', finalResult);
+  } catch (err) {
+    return serverError(res);
+  }
+};
+
 export {
-  postAdvert, updateAdvert, markSold, deleteAdvert, getAllAdverts
+  postAdvert, updateAdvert, markSold, deleteAdvert, getAllAdverts, getOneAdvert
 };

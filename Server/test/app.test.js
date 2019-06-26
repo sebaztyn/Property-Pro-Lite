@@ -160,7 +160,7 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
         done();
       });
   });
-  it('should get all properties of a SPECIFIC PROPERTY TYPE posted on the app', (done) => {
+  it('should get ALL PROPERTIES of a SPECIFIC PROPERTY TYPE posted on the app', (done) => {
     chai.request(server)
       .get('/api/v1/property?type=3-bedroom')
       .end((err, res) => {
@@ -180,6 +180,29 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
         expect(res.body.data[0].price).to.be.a('number');
         expect(res.body.data[0].ownerEmail).to.be.a('string');
         expect(res.body.data[0].ownerPhoneNumber).to.be.a('string');
+        done();
+      });
+  });
+  it('should retrieve A SPECIFIC PROPERTY', (done) => {
+    chai.request(server)
+      .get('/api/v1/property/1')
+      .end((err, res) => {
+        if (err)done(err);
+        expect(res.body).to.have.keys('status', 'data');
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('success');
+        expect(res.body).to.have.ownProperty('data').to.be.an('object');
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.type).to.be.a('string');
+        expect(res.body.data.city).to.be.a('string');
+        expect(res.body.data.address).to.be.a('string');
+        expect(res.body.data.image_url).to.be.a('string');
+        expect(res.body.data.price).to.be.a('number');
+        expect(res.body.data.ownerEmail).to.be.a('string');
+        expect(res.body.data.ownerPhoneNumber).to.be.a('string');
         done();
       });
   });

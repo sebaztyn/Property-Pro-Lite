@@ -52,6 +52,11 @@ class Property {
     return this.propertyList;
   }
 
+  findOne(id) {
+    const oneProperty = this.propertyList.find(property => property.id === id);
+    return oneProperty;
+  }
+
   updateAdvert(propObj, propId) {
     this.propertyList.splice(propId, 1, propObj);
     return this.propertyList;

@@ -86,7 +86,10 @@ const deleteAdvert = (req, res) => {
     return serverError(res);
   }
 };
-
+const getPropertyType = (arr, type) => {
+  const specificPropertyType = arr.filter(property => property.type === type);
+  return specificPropertyType;
+};
 const getAllAdverts = (req, res) => {
   try {
     const allAdverts = propertyObj.findAllProps();
@@ -98,6 +101,16 @@ const getAllAdverts = (req, res) => {
       advert.ownerPhoneNumber = user.phoneNumber;
       return advert;
     });
+    if (req.query.type) {
+      const { type } = req.query;
+      const queryResult = getPropertyType(finalList, type);
+      if (queryResult.length) {
+        return serverResponse(res, 200, 'status', 'success', 'data', queryResult);
+      }
+      return serverResponse(res, 404, 'status', 'error', 'error', 'No result found. Enter a valid value and try again.');
+
+
+    }
     return serverResponse(res, 200, 'status', 'success', 'data', finalList);
   } catch (err) {
     return serverError(res);

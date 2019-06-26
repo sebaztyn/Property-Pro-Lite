@@ -16,3 +16,4 @@ after_success:
 
 env:
   global:
+    - CODECLIMATE_REPO_TOKEN=d737958c1f2bc5952d162d24fc2ba250fe4cc308cfc2799063400da0952b0f5a

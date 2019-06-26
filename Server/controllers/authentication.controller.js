@@ -18,7 +18,7 @@ const addUser = async (req, res) => {
       email, first_name, last_name, password, phoneNumber, address
     });
     const { id, email: userEmail } = displayResult;
-    const token = generateToken({ id, userEmail });
+    const token = generateToken({ id, userEmail, phoneNumber });
     displayResult.token = token;
     return userResponse(res, 201, displayResult);
   } catch (err) {

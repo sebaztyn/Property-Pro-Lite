@@ -31,22 +31,28 @@ const allData = {
   ],
   propertyData: [
     {
+      owner: 2,
       id: 1,
       price: 10000000.00,
       state: 'Ogun',
       city: 'Abeokuta',
       type: '3-bedroom',
       address: 'Abeokuta Ogun Nigeria',
-      image_url: 'https://afsddsfsddrseeseewsdssdsdds'
+      image_url: 'https://afsddsfsddrseeseewsdssdsdds',
+      created_on: today,
+      status: 'Available'
     },
     {
+      owner: 2,
       id: 2,
       price: 30000000.00,
       state: 'Lagos',
       city: 'Lekki',
       type: '2-bedroom',
       address: 'Lekki Lagos Nigeria',
-      image_url: 'https://afsddsfsfssddssdsdds'
+      image_url: 'https://afsddsfsfssddssdsdds',
+      created_on: today,
+      status: 'Available'
     }
   ]
 };

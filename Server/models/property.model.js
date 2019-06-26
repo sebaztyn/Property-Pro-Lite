@@ -48,7 +48,7 @@ class Property {
     };
   }
 
-  findAllUsers() {
+  findAllProps() {
     return this.propertyList;
   }
 

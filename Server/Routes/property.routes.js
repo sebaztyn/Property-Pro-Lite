@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { cloudinaryConfig } from '../config/cloudinaryConfig';
 import { multerUploads } from '../middleware/multer';
 import {
-  postAdvert, updateAdvert, markSold, deleteAdvert
+  postAdvert, updateAdvert, markSold, deleteAdvert, getAllAdverts
 } from '../controllers/property.controller';
 import { checkToken } from '../middleware/tokenHandler';
 import { propertyValidator } from '../middleware/validator';
@@ -13,6 +13,7 @@ router.post('/', checkToken, cloudinaryConfig, multerUploads, propertyValidator,
 router.patch('/:propertyId', checkToken, cloudinaryConfig, multerUploads, propertyValidator, updateAdvert);
 router.patch('/:propertyId/sold', checkToken, markSold);
 router.delete('/:propertyId', checkToken, deleteAdvert);
+router.get('/', getAllAdverts);
 
 
 export default router;

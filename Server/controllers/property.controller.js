@@ -2,6 +2,7 @@
 import { serverError, serverResponse } from '../helper/serverResponse';
 import { imageUpload } from '../middleware/multer';
 import propertyObj from '../models/property.model';
+import userObj from '../models/users.model';
 
 
 const postAdvert = async (req, res) => {
@@ -39,7 +40,7 @@ const updateAdvert = async (req, res) => {
       else image_url = fileUrl;
     }
     const propId = Number(req.params.propertyId);
-    const propArray = propertyObj.findAllUsers();
+    const propArray = propertyObj.findAllProps();
     const propertyData = propArray.find(property => property.id === propId);
     const propIndex = propArray.findIndex(property => property.id === propId);
     const {
@@ -61,7 +62,7 @@ const updateAdvert = async (req, res) => {
 const markSold = (req, res) => {
   try {
     const id = Number(req.params.propertyId);
-    const propArray = propertyObj.findAllUsers();
+    const propArray = propertyObj.findAllProps();
     const propToUpdate = propArray.find(property => property.id === id);
     const propIndex = propArray.findIndex(property => property.id === id);
     propToUpdate.status = 'sold';
@@ -86,6 +87,22 @@ const deleteAdvert = (req, res) => {
   }
 };
 
+const getAllAdverts = (req, res) => {
+  try {
+    const allAdverts = propertyObj.findAllProps();
+    const allUsers = userObj.findAllUsers();
+    const finalList = allAdverts.map((advert) => {
+      const ownerID = advert.owner;
+      const user = allUsers.find(each => each.id === ownerID);
+      advert.ownerEmail = user.email;
+      advert.ownerPhoneNumber = user.phoneNumber;
+      return advert;
+    });
+    return serverResponse(res, 200, 'status', 'success', 'data', finalList);
+  } catch (err) {
+    return serverError(res);
+  }
+};
 export {
-  postAdvert, updateAdvert, markSold, deleteAdvert
+  postAdvert, updateAdvert, markSold, deleteAdvert, getAllAdverts
 };

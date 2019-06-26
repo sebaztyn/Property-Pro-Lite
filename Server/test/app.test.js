@@ -85,7 +85,7 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
       .field('state', 'Lagos')
       .field('city', 'Ikeja')
       .field('address', 'Odalume, Ladipo, Lagos State')
-      .field('type', '2-bedroom Flat')
+      .field('type', '2-bedroom')
       .attach('image', path.join(`${__dirname}/images/colourful.jpg`))
       .end((err, res) => {
         if (err) {
@@ -115,7 +115,7 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
       .field('state', 'Kwara')
       .field('city', 'Ilorin')
       .field('address', '39, Balogun Fulani Road, Ilorin')
-      .field('type', '3-bedroom Flat')
+      .field('type', '3-bedroom')
       .attach('image', path.join(`${__dirname}/images/colourful.jpg`))
       .end((err, res) => {
         if (err) {
@@ -160,6 +160,44 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
         done();
       });
   });
+  it('should get all properties of a SPECIFIC PROPERTY TYPE posted on the app', (done) => {
+    chai.request(server)
+      .get('/api/v1/property?type=3-bedroom')
+      .end((err, res) => {
+        if (err)done(err);
+        expect(res.body).to.have.keys('status', 'data');
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('success');
+        expect(res.body).to.have.ownProperty('data').to.be.an('array');
+        expect(res.body.data[0].id).to.be.a('number');
+        expect(res.body.data[0].status).to.be.a('string');
+        expect(res.body.data[0].state).to.be.a('string');
+        expect(res.body.data[0].type).to.be.a('string');
+        expect(res.body.data[0].city).to.be.a('string');
+        expect(res.body.data[0].address).to.be.a('string');
+        expect(res.body.data[0].image_url).to.be.a('string');
+        expect(res.body.data[0].price).to.be.a('number');
+        expect(res.body.data[0].ownerEmail).to.be.a('string');
+        expect(res.body.data[0].ownerPhoneNumber).to.be.a('string');
+        done();
+      });
+  });
+  it('should return an error when an invalid or a non-existent property type is entered', (done) => {
+    chai.request(server)
+      .get('/api/v1/property?type=3-Bedroom')
+      .end((err, res) => {
+        if (err)done(err);
+        expect(res.body).to.have.keys('status', 'error');
+        expect(res.status).to.equal(404);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('error');
+        expect(res.body).to.have.ownProperty('error').to.be.a('string');
+        expect(res.body.error).to.be.a('string');
+        expect(res.body.error).to.equal('No result found. Enter a valid value and try again.');
+        done();
+      });
+  });
   it('should update property advert as Sold', (done) => {
     chai.request(server)
       .patch('/api/v1/property/3/sold')
@@ -201,7 +239,7 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
   });
   it('should return message "Advert not found. Advert may have been removed" if property ID does not exist', (done) => {
     chai.request(server)
-      .delete('/api/v1/property/6')
+      .delete('/api/v1/property/30')
       .set('Authorization', `Bearer ${testToken}`)
       .end((err, res) => {
         if (err) done(err);

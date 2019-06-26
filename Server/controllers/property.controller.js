@@ -116,23 +116,6 @@ const getAllAdverts = (req, res) => {
   }
 };
 
-const getOneAdvert = (req, res) => {
-  try {
-    const id = Number(req.params.propertyId);
-    const result = propertyObj.findOne(id);
-    if (!result) return serverResponse(res, 404, 'status', 'error', 'error', 'No result found. Enter a valid value and try again.');
-    const advertOwnerID = result.owner;
-    const userList = userObj.findAllUsers();
-    const advertOwner = userList.find(user => user.id === advertOwnerID);
-    result.ownerEmail = advertOwner.email;
-    result.ownerPhoneNumber = advertOwner.phoneNumber;
-    const { owner, ...finalResult } = result;
-    return serverResponse(res, 200, 'status', 'success', 'data', finalResult);
-  } catch (err) {
-    return serverError(res);
-  }
-};
-
 export {
   postAdvert, updateAdvert, markSold, deleteAdvert, getAllAdverts, getOneAdvert
 };

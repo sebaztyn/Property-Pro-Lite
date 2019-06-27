@@ -206,21 +206,6 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
         done();
       });
   });
-  it('should return an error when an invalid or a non-existent property type is entered', (done) => {
-    chai.request(server)
-      .get('/api/v1/property?type=3-Bedroom')
-      .end((err, res) => {
-        if (err)done(err);
-        expect(res.body).to.have.keys('status', 'error');
-        expect(res.status).to.equal(404);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.ownProperty('status').that.equals('error');
-        expect(res.body).to.have.ownProperty('error').to.be.a('string');
-        expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal('No result found. Enter a valid value and try again.');
-        done();
-      });
-  });
   it('should update property advert as Sold', (done) => {
     chai.request(server)
       .patch('/api/v1/property/3/sold')

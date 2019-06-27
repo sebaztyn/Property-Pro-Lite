@@ -26,7 +26,7 @@ const postAdvert = async (req, res) => {
       type,
       address
     });
-    return serverResponse(res, 201, 'status', 'success', 'data', displayResult);
+    return serverResponse(res, 201, ...['status', 'success', 'data', displayResult]);
   } catch (err) {
     return serverError(res);
   }
@@ -53,7 +53,7 @@ const updateAdvert = async (req, res) => {
     propertyData.image_url = (propertyData.image_url === image_url) ? propertyData.image_url : image_url;
     propertyData.type = (propertyData.type === type) ? propertyData.type : type;
     propertyObj.updateAdvert(propertyData, propIndex);
-    return serverResponse(res, 200, 'status', 'success', 'data', propertyData);
+    return serverResponse(res, 200, ...['status', 'success', 'data', propertyData]);
   } catch (err) {
     return serverError(res);
   }
@@ -67,7 +67,7 @@ const markSold = (req, res) => {
     const propIndex = propArray.findIndex(property => property.id === id);
     propToUpdate.status = 'sold';
     propertyObj.updateAdvert(propToUpdate, propIndex);
-    return serverResponse(res, 200, 'status', 'success', 'data', propToUpdate);
+    return serverResponse(res, 200, ...['status', 'success', 'data', propToUpdate]);
   } catch (err) {
     return serverError(res);
   }
@@ -78,9 +78,9 @@ const deleteAdvert = (req, res) => {
     const id = Number(req.params.propertyId);
     const propToDelete = propertyObj.deleteProp(id);
     if (propToDelete) {
-      return serverResponse(res, 200, 'status', 'success', 'data', { message: 'Advert deleted Successfully' });
+      return serverResponse(res, 200, ...['status', 'success', 'data', { message: 'Advert deleted Successfully' }]);
     }
-    return serverResponse(res, 404, 'status', 'error', 'error', 'Advert not found. Advert may have been removed');
+    return serverResponse(res, 404, ...['status', 'error', 'error', 'Advert not found. Advert may have been removed']);
 
   } catch (err) {
     return serverError(res);
@@ -105,12 +105,10 @@ const getAllAdverts = (req, res) => {
     if (req.query.type) {
       const { type } = req.query;
       const queryResult = getPropertyType(finalList, type);
-      if (queryResult.length) {
-        return serverResponse(res, 200, 'status', 'success', 'data', queryResult);
-      }
-      return serverResponse(res, 404, 'status', 'error', 'error', 'No result found. Enter a valid value and try again.');
+      if (queryResult.length) return serverResponse(res, 200, ...['status', 'success', 'data', queryResult]);
+      throw new Error('Enter a valid value and try again.');
     }
-    return serverResponse(res, 200, 'status', 'success', 'data', finalList);
+    return serverResponse(res, 200, ...['status', 'success', 'data', finalList]);
   } catch (err) {
     return serverError(res);
   }
@@ -119,15 +117,16 @@ const getAllAdverts = (req, res) => {
 const getOneAdvert = (req, res) => {
   try {
     const id = Number(req.params.propertyId);
+    if (!id) throw new Error('Invalid Advert ID');
     const result = propertyObj.findOne(id);
-    if (!result) return serverResponse(res, 404, 'status', 'error', 'error', 'No result found. Enter a valid value and try again.');
+    if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', 'No result found. Enter a valid value and try again.']);
     const advertOwnerID = result.owner;
     const userList = userObj.findAllUsers();
     const advertOwner = userList.find(user => user.id === advertOwnerID);
     result.ownerEmail = advertOwner.email;
     result.ownerPhoneNumber = advertOwner.phoneNumber;
     const { owner, ...finalResult } = result;
-    return serverResponse(res, 200, 'status', 'success', 'data', finalResult);
+    return serverResponse(res, 200, ...['status', 'success', 'data', finalResult]);
   } catch (err) {
     return serverError(res);
   }

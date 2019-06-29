@@ -6,253 +6,259 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../css/property-info.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/regular.css"
+    integrity="sha384-5E/NXotaQSDJW8gq/9pxwQHSPRrb21suHuLPqOIlgob8QC8ltM13i6HLujrhWmBL" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/fontawesome.css"
+    integrity="sha384-NnhYAEceBbm5rQuNvCv6o4iIoPZlkaWfvuXVh4XkRNvHWKgu/Mk2nEjFZpPQdwiz" crossorigin="anonymous">
+
   <title>Document</title>
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <a href="index.html">
-        <img src="../img/pro_logo.png" alt="">
-        <span>PRO-LITE</span>
-      </a>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="../img/pro_logo.png" alt="">
+          <span>PRO-LITE</span>
+        </a>
+      </div>
+      <div id="hamburger"><input type="checkbox"><span></span><span></span><span></span></div>
+      <nav class="gallery-in">
+        <ul class="navbar-in">
+          <li>
+            <a href="#">
+              For Sale
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              For Rent
+            </a>
+          </li>
+          <li class="list-property">
+            <a href="listproperty.html">
+              List Property
+            </a>
+          </li>
+          <li class="dashboard-one">
+            <a href="dashboard.html">
+              Dashboard
+            </a>
+          </li>
+          <li class="login-navbar-one">
+            <a href="login.html">
+              Login
+            </a>
+          </li>
+          <li class="signup-navbar-one">
+            <a href="signup.html">
+              Sign Up
+            </a>
+
+          </li>
+          <li class="signout-navbar-one">
+            <a href="#">
+              Sign Out
+            </a>
+
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <ul class="navbar">
+      <li>
+        <a href="#">
+          For Sale
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          For Rent
+        </a>
+      </li>
+      <li class="list-property">
+        <a href="listproperty.html">
+          List Property
+        </a>
+      </li>
+      <li class="dashboard-two">
+        <a href="dashboard.html">
+          Dashboard
+        </a>
+      </li>
+      <li class="login-navbar-two">
+        <a href="login.html">
+          Login
+        </a>
+      </li>
+      <li class="signup-navbar-two">
+        <a href="signup.html">
+          Sign Up
+        </a>
+
+      </li>
+      <li class="signout-navbar-two">
+        <a href="#">
+          Sign Out
+        </a>
+
+      </li>
+    </ul>
+    <div id="search-form">
+      <select name="property-category">
+        <option value="" selected disabled>Property Category</option>
+        <option value="buy">BUY</option>
+        <option value="rent">RENT</option>
+        <option value="short-let">SHORT LET</option>
+      </select>
+      <select name="property-type">
+        <option value="" selected disabled>Property Type</option>
+        <option value="offices">offices</option>
+        <option value="shops">shops</option>
+        <option value="warehouses">warehouses</option>
+        <option value="commercial-property">commercial property</option>
+        <option value="flats/apartments">flats/apartments</option>
+        <option value="flat-blocks">flat-blocks</option>
+        <option value="mini-flat">mini-flat</option>
+        <option value="rooms/boys-quarters">rooms/boys-quarters</option>
+        <option value="duplex">duplex</option>
+        <option value="terraces">terraces</option>
+        <option value="townhouses">townhouses</option>
+        <option value="land">land</option>
+      </select>
+      <select name="bedroom">
+        <option value="" selected disabled>Number of Bedrooms</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="more">more</option>
+      </select>
+      <button>SEARCH</button>
     </div>
-    <div id="hamburger"><input type="checkbox"><span></span><span></span><span></span></div>
-    <nav class="gallery-in">
-      <ul class="navbar-in">
-        <li>
-          <a href="#">
-            For Sale
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            For Rent
-          </a>
-        </li>
-        <li class="list-property">
-          <a href="listproperty.html">
-            List Property
-          </a>
-        </li>
-        <li class="dashboard-one">
-          <a href="dashboard.html">
-            Dashboard
-          </a>
-        </li>
-        <li class="login-navbar-one">
-          <a href="login.html">
-            Login
-          </a>
-        </li>
-        <li class="signup-navbar-one">
-          <a href="signup.html">
-            Sign Up
-          </a>
+    <main class="property-list-container">
+      <div class="property-information">
+        <div class="property-title">
 
-        </li>
-        <li class="signout-navbar-one">
-          <a href="#">
-            Sign Out
-          </a>
-
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <ul class="navbar">
-    <li>
-      <a href="#">
-        For Sale
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        For Rent
-      </a>
-    </li>
-    <li class="list-property">
-      <a href="listproperty.html">
-        List Property
-      </a>
-    </li>
-    <li class="dashboard-two">
-      <a href="dashboard.html">
-        Dashboard
-      </a>
-    </li>
-    <li class="login-navbar-two">
-      <a href="login.html">
-        Login
-      </a>
-    </li>
-    <li class="signup-navbar-two">
-      <a href="signup.html">
-        Sign Up
-      </a>
-
-    </li>
-    <li class="signout-navbar-two">
-      <a href="#">
-        Sign Out
-      </a>
-
-    </li>
-  </ul>
-  <div id="search-form">
-    <select name="property-category">
-      <option value="" selected disabled>Property Category</option>
-      <option value="buy">BUY</option>
-      <option value="rent">RENT</option>
-      <option value="short-let">SHORT LET</option>
-    </select>
-    <select name="property-type">
-      <option value="" selected disabled>Property Type</option>
-      <option value="offices">offices</option>
-      <option value="shops">shops</option>
-      <option value="warehouses">warehouses</option>
-      <option value="commercial-property">commercial property</option>
-      <option value="flats/apartments">flats/apartments</option>
-      <option value="flat-blocks">flat-blocks</option>
-      <option value="mini-flat">mini-flat</option>
-      <option value="rooms/boys-quarters">rooms/boys-quarters</option>
-      <option value="duplex">duplex</option>
-      <option value="terraces">terraces</option>
-      <option value="townhouses">townhouses</option>
-      <option value="land">land</option>
-    </select>
-    <select name="bedroom">
-      <option value="" selected disabled>Number of Bedrooms</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="more">more</option>
-    </select>
-    <button>SEARCH</button>
-  </div>
-  <main class="property-list-container">
-    <div class="property-information">
-      <div class="property-title">
-
-      </div>
-      <div class="image">
-        <img src="" alt="images">
-      </div>
-      <a href="#contacting" class="agent-contact">
-        Contact agent
-      </a>
-      <a href="#scamming" class="report-advert">
-        <i class="fa fa-exclamation-triangle"></i> Report Advert
-      </a>
-      <div class="property-info">
-        <div class="general-features">
-          <div class="description">
-            <p class="price"></p>
-            <p class="property-description">
-              Description
-            </p>
-            A 3-bedroom flat at Gwarinpa, Abuja.
-            Well spaced toilet and bathroom in each room.
-            Great exterior for your comfort.
-            Conducive environment.
-            Adequate Security.
-            Annual service charge of 100,000
-          </div>
-          <div class="internal-features">
-            <div>Internal Features</div>
-            <div>
-              <span><i class="far fa-dot-circle"></i> Aircon</span>
-              <span><i class="far fa-dot-circle"></i>All rooms ensuite</span>
-              <span><i class="far fa-dot-circle"></i>Bathub</span>
-              <span><i class="far fa-dot-circle"></i>Built in cupboards</span>
-              <span><i class="far fa-dot-circle"></i>Family TV Room</span>
-              <span><i class="far fa-dot-circle"></i>Guest Toilet</span>
-              <span><i class="far fa-dot-circle"></i>Jacuzzi</span>
-              <span><i class="far fa-dot-circle"></i>Kitchen</span>
-              <span><i class="far fa-dot-circle"></i>P.O.P</span>
-              <span><i class="far fa-dot-circle"></i>Pantry</span>
+        </div>
+        <div class="image">
+          <img src="" alt="images">
+        </div>
+        <a href="#contacting" class="agent-contact">
+          Contact agent
+        </a>
+        <a href="#scamming" class="report-advert">
+          <i class="far fa-exclamation-triangle"></i> Report Advert
+        </a>
+        <div class="property-info">
+          <div class="general-features">
+            <div class="description">
+              <p class="price"></p>
+              <p class="property-description">
+                Description
+              </p>
+              A 3-bedroom flat at Gwarinpa, Abuja.
+              Well spaced toilet and bathroom in each room.
+              Great exterior for your comfort.
+              Conducive environment.
+              Adequate Security.
+              Annual service charge of 100,000
             </div>
-          </div>
-          <div class="external-features">
-            <div>External Features</div>
-            <div>
-              <span><i class="far fa-dot-circle"></i> Aircon</span>
-              <span><i class="far fa-dot-circle"></i>All rooms ensuite</span>
-              <span><i class="far fa-dot-circle"></i>Bathub</span>
-              <span><i class="far fa-dot-circle"></i>Built in cupboards</span>
-              <span><i class="far fa-dot-circle"></i>Family TV Room</span>
-              <span><i class="far fa-dot-circle"></i>Guest Toilet</span>
-              <span><i class="far fa-dot-circle"></i>Jacuzzi</span>
-              <span><i class="far fa-dot-circle"></i>Kitchen</span>
-              <span><i class="far fa-dot-circle"></i>P.O.P</span>
-              <span><i class="far fa-dot-circle"></i>Pantry</span>
+            <div class="internal-features">
+              <div>Internal Features</div>
+              <div>
+                <span><i class="far fa-dot-circle"></i> Aircon</span>
+                <span><i class="far fa-dot-circle"></i>All rooms ensuite</span>
+                <span><i class="far fa-dot-circle"></i>Bathub</span>
+                <span><i class="far fa-dot-circle"></i>Built in cupboards</span>
+                <span><i class="far fa-dot-circle"></i>Family TV Room</span>
+                <span><i class="far fa-dot-circle"></i>Guest Toilet</span>
+                <span><i class="far fa-dot-circle"></i>Jacuzzi</span>
+                <span><i class="far fa-dot-circle"></i>Kitchen</span>
+                <span><i class="far fa-dot-circle"></i>P.O.P</span>
+                <span><i class="far fa-dot-circle"></i>Pantry</span>
+              </div>
             </div>
-          </div>
-          <div class="contact-form" id="contacting">
-            <div class="phone-card">
-              <p>Phone the Agent</p>
-              <p>John Doe</p>
-              <p>+2348023456789</p>
+            <div class="external-features">
+              <div>External Features</div>
+              <div>
+                <span><i class="far fa-dot-circle"></i> Aircon</span>
+                <span><i class="far fa-dot-circle"></i>All rooms ensuite</span>
+                <span><i class="far fa-dot-circle"></i>Bathub</span>
+                <span><i class="far fa-dot-circle"></i>Built in cupboards</span>
+                <span><i class="far fa-dot-circle"></i>Family TV Room</span>
+                <span><i class="far fa-dot-circle"></i>Guest Toilet</span>
+                <span><i class="far fa-dot-circle"></i>Jacuzzi</span>
+                <span><i class="far fa-dot-circle"></i>Kitchen</span>
+                <span><i class="far fa-dot-circle"></i>P.O.P</span>
+                <span><i class="far fa-dot-circle"></i>Pantry</span>
+              </div>
             </div>
-            <hr>
-            <div class="email-card">
-              <p>Email the Agent</p>
-              <input type="text" name="" id="" placeholder="Name">
+            <div class="contact-form" id="contacting">
+              <div class="phone-card">
+                <p>Phone the Agent</p>
+                <p>John Doe</p>
+                <p>+2348023456789</p>
+              </div>
               <hr>
-              <input type="email" name="" id="" placeholder="Email">
-              <hr>
-              <input type="number" name="" id="" placeholder="Number">
-              <hr>
-              <textarea name="" id="" rows="8"></textarea>
-              <button class="submit-request"><i class="fa fa-paper-plane"></i> Send</button>
+              <div class="email-card">
+                <p>Email the Agent</p>
+                <input type="text" name="" id="" placeholder="Name">
+                <hr>
+                <input type="email" name="" id="" placeholder="Email">
+                <hr>
+                <input type="number" name="" id="" placeholder="Number">
+                <hr>
+                <textarea name="" id="" rows="8"></textarea>
+                <button class="submit-request"><i class="fa fa-paper-plane"></i> Send</button>
+              </div>
             </div>
-          </div>
-          <div class="scam-form" id="scamming">
-            <div class="email-card">
-              <p>Report this Advert</p>
+            <div class="scam-form" id="scamming">
+              <div class="email-card">
+                <p>Report this Advert</p>
 
-              <input type="text" name="" id="" placeholder="Name">
-              <hr>
-              <input type="email" name="" id="" placeholder="Email">
-              <hr>
-              <select name="fraud" id="">
-                <option value="" selected>Reason</option>
-                <option value="fraud">Fraudulent Property</option>
-                <option value="unavailable">Unavailable Property</option>
-                <option value="no-consent">Property advertised without consent</option>
-                <option value="others">Others</option>
-              </select>
-              <hr>
-              <textarea name="" id="" rows="8"></textarea>
-              <button class="submit-fraud"><i class="fa fa-exclamation-triangle"></i> Report Advert</button>
+                <input type="text" name="" id="" placeholder="Name">
+                <hr>
+                <input type="email" name="" id="" placeholder="Email">
+                <hr>
+                <select name="fraud" id="">
+                  <option value="" selected>Reason</option>
+                  <option value="fraud">Fraudulent Property</option>
+                  <option value="unavailable">Unavailable Property</option>
+                  <option value="no-consent">Property advertised without consent</option>
+                  <option value="others">Others</option>
+                </select>
+                <hr>
+                <textarea name="" id="" rows="8"></textarea>
+                <button class="submit-fraud"><i class="far fa-exclamation-triangle"></i> Report Advert</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
-  <footer>
-    <div>
-      <p class="login-footer">
-        &#169 2019 Property Pro Lite. All Rights Reserved
-      </p>
+    </main>
+    <footer>
       <div>
-        <a href="#">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-instagram"></i>
-        </a>
+        <p class="login-footer">
+          &#169 2019 Property Pro Lite. All Rights Reserved
+        </p>
+        <div>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
   <script src="../js/pro-lite.js"></script>
 </body>
 

@@ -1,12 +1,15 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 import authenticationRouter from './Routes/authentication.routes';
 import propertyRouter from './Routes/property.routes';
+import swaggerDocument from '../swagger.json';
 
 
 const app = express();
 
 app.use(express.json());
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.send("Welcome to my Property-Pro Lite Endpoints' Page");
 });

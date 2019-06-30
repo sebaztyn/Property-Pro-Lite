@@ -30,8 +30,8 @@ const login = async (req, res) => {
     const { password, email } = req.body;
     const alluserObj = userObj.findAllUsers();
     const displayResult = alluserObj.find(u => u.email === email);
-    if (displayResult.email !== email) {
-      return serverResponse(res, 403, ...['status', 'error', 'error', 'Invalid email or Password']);
+    if (!displayResult) {
+      return serverResponse(res, 403, ...['status', 'error', 'error', 'Invalid email']);
     }
     const decryptedPassword = await decryptPassword(password, displayResult.password);
     if (!decryptedPassword) {

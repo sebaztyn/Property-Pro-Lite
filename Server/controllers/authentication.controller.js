@@ -17,8 +17,8 @@ const addUser = async (req, res) => {
     const displayResult = userObj.addUser({
       email, first_name, last_name, password, phoneNumber, address
     });
-    const { id, email: userEmail } = displayResult;
-    const token = generateToken({ id, userEmail, phoneNumber });
+    const { id } = displayResult;
+    const token = generateToken({ id, email, phoneNumber });
     displayResult.token = token;
     return userResponse(res, 201, displayResult);
   } catch (err) {
@@ -30,16 +30,21 @@ const login = async (req, res) => {
     const { password, email } = req.body;
     const alluserObj = userObj.findAllUsers();
     const displayResult = alluserObj.find(u => u.email === email);
-    if (displayResult.email !== email) {
-      return serverResponse(res, 403, ...['status', 'error', 'error', 'Invalid email or Password']);
+    if (!displayResult) {
+      return serverResponse(res, 403, ...['status', 'error', 'error', 'Invalid email']);
     }
     const decryptedPassword = await decryptPassword(password, displayResult.password);
     if (!decryptedPassword) {
       return serverResponse(res, 422, ...['status', 'error', 'error', 'Incorrect Password']);
     }
-    const token = generateToken(displayResult);
-    displayResult.token = token;
-    return userResponse(res, 200, displayResult);
+    const {
+      id, phoneNumber, first_name, last_name
+    } = displayResult;
+    const token = generateToken({ id, email, phoneNumber });
+    const finalResult = {
+      id, token, first_name, last_name, email
+    };
+    return userResponse(res, 200, finalResult);
   } catch (err) {
     return serverError(res);
   }

@@ -180,7 +180,7 @@
   display: flex;
   flex-direction: column;
   font-size: 1.8rem;
-  line-height: 1.5
+  /* line-height: 1.5 */
 }
 
 .property-detail-card>p:first-child {
@@ -306,8 +306,8 @@ section>h4 {
 
 @media(orientation: landscape) and (max-width: 823px) {
   .property-detail-card {
-    font-size: 1.2rem;
-    line-height: 1
+    font-size: 1rem;
+    line-height: 1.2
   }
 }
 

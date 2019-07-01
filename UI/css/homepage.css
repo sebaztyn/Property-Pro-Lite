@@ -320,6 +320,8 @@ a {
   padding: 0 5em;
   opacity: 1;
   transition: opacity 0.7s linear;
+  position: absolute;
+  top: 0;
 }
 
 .second-div {
@@ -410,8 +412,6 @@ input {
 textarea {
   resize: none;
   outline: none;
-  /* border: none;
-  border-bottom: darkgrey solid 1px; */
 }
 
 .second-div>div>span {
@@ -431,6 +431,10 @@ textarea {
   color: #fff;
   background: var(--header-color);
   transition: background 0.4s linear;
+}
+
+.third-div>input:last-child:hover {
+  cursor: pointer;
 }
 
 .third-div>input:last-child:hover {

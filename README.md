@@ -60,7 +60,7 @@ npm start
 ```
 
 #### Template URL
-- https://sebaztyn.github.io/EPIC-Mail/UI/index.html
+- https://sebaztyn.github.io/Property-Pro-Lite/UI/html/index.html
 
 #### API URL
 - https://property-pro-lite-andela.herokuapp.com/

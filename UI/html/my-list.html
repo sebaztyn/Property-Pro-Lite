@@ -6,17 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="../css/my-list.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/regular.css"
-    integrity="sha384-5E/NXotaQSDJW8gq/9pxwQHSPRrb21suHuLPqOIlgob8QC8ltM13i6HLujrhWmBL" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/fontawesome.css"
-    integrity="sha384-NnhYAEceBbm5rQuNvCv6o4iIoPZlkaWfvuXVh4XkRNvHWKgu/Mk2nEjFZpPQdwiz" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/v4-shims.css">
 
   <title>My Property List | Pro Lite</title>
 </head>
 
 <body>
-  <header>
-    <div class="container">
+  <div class="container">
+    <header>
       <div class="logo">
         <a href="index.html">
           <img src="../img/pro_logo.png" alt="">
@@ -65,126 +63,171 @@
           </li>
         </ul>
       </nav>
-  </header>
-  <ul class="navbar">
-    <li>
-      <a href="#">
-        For Sale
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        For Rent
-      </a>
-    </li>
-    <li class="list-property">
-      <a href="listproperty.html">
-        List Property
-      </a>
-    </li>
-    <li class="dashboard-two">
-      <a href="dashboard.html">
-        Dashboard
-      </a>
-    </li>
-    <li class="login-navbar-two">
-      <a href="login.html">
-        Login
-      </a>
-    </li>
-    <li class="signup-navbar-two">
-      <a href="signup.html">
-        Sign Up
-      </a>
+    </header>
+    <ul class="navbar">
+      <li>
+        <a href="#">
+          For Sale
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          For Rent
+        </a>
+      </li>
+      <li class="list-property">
+        <a href="listproperty.html">
+          List Property
+        </a>
+      </li>
+      <li class="dashboard-two">
+        <a href="dashboard.html">
+          Dashboard
+        </a>
+      </li>
+      <li class="login-navbar-two">
+        <a href="login.html">
+          Login
+        </a>
+      </li>
+      <li class="signup-navbar-two">
+        <a href="signup.html">
+          Sign Up
+        </a>
 
-    </li>
-    <li class="signout-navbar-two">
-      <a href="#">
-        Sign Out
-      </a>
+      </li>
+      <li class="signout-navbar-two">
+        <a href="#">
+          Sign Out
+        </a>
 
-    </li>
-  </ul>
-  <main class="my-list-body">
-    <div class="listings" data-property_id='1'>
-      <div>
-        <img src="http://example.com" alt="image 1">
-        <p>3-bedroom</p>
-        <hr>
-        <p>Property Address</p>
-        <p>Property Price</p>
+      </li>
+    </ul>
+    <main class="my-list-body">
+      <div class="listings" data-property_id='1'>
+        <div>
+          <img src="http://example.com" alt="image 1">
+          <p>3-bedroom</p>
+          <hr>
+          <p>Property Address</p>
+          <p>Property Price</p>
+        </div>
+        <div>
+          <span><i class="far fa-edit"></i> Edit</span>
+          <span><i class="far fa-trash"></i>Delete</span>
+          <span> <i class="far fa-check-circle"></i>Mark as sold</span>
+        </div>
+        <em class="sold-notification" data-property_id='1'><i class="fas fa-check"></i>Property Sold</em>
       </div>
-      <div>
-        <span><i class="far fa-edit"></i> Edit</span>
-        <span><i class="far fa-trash"></i>Delete</span>
-        <span> <i class="far fa-check-circle"></i>Mark as sold</span>
+      <div class="listings" data-property_id='2'>
+        <div>
+          <img src="http://example.com" alt="image 2">
+          <p>2-bedroom</p>
+          <hr>
+          <p>Property Address</p>
+          <p>Property Price</p>
+        </div>
+        <div>
+          <span><i class="far fa-edit"></i>Edit</span>
+          <span><i class="far fa-trash"></i>Delete</span>
+          <span><i class="far fa-check-circle"></i>Mark as sold</span>
+        </div>
+        <em class="sold-notification" data-property_id='2'><i class="far fa-check"></i>Property Sold</em>
       </div>
-      <em class="sold-notification" data-property_id='1'><i class="fas fa-check"></i>Property Sold</em>
-    </div>
-    <div class="listings" data-property_id='2'>
-      <div>
-        <img src="http://example.com" alt="image 2">
-        <p>2-bedroom</p>
-        <hr>
-        <p>Property Address</p>
-        <p>Property Price</p>
+      <div class="listings" data-property_id='3'>
+        <div>
+          <img src="http://example.com" alt="image 3">
+          <p>Terraces</p>
+          <hr>
+          <p>Property Address</p>
+          <p>Property Price</p>
+        </div>
+        <div>
+          <span><i class="far fa-edit"></i>Edit</span>
+          <span><i class="far fa-trash"></i>Delete</span>
+          <span><i class="far fa-check-circle"></i>Mark as sold</span>
+        </div>
+        <em class="sold-notification" data-property_id='3'><i class="fas fa-check"></i>Property Sold</em>
       </div>
-      <div>
-        <span><i class="far fa-edit"></i>Edit</span>
-        <span><i class="far fa-trash"></i>Delete</span>
-        <span><i class="far fa-check-circle"></i>Mark as sold</span>
+      <div class="listings" data-property_id='4'>
+        <div>
+          <img src="http://example.com" alt="image 4">
+          <p>Mini-Flat</p>
+          <hr>
+          <p>Property Address</p>
+          <p>Property Price</p>
+        </div>
+        <div>
+          <span><i class="far fa-edit"></i>Edit</span>
+          <span><i class="far fa-trash"></i>Delete</span>
+          <span><i class="far fa-check-circle"></i>Mark as sold</span>
+        </div>
+        <em class="sold-notification" data-property_id='4'><i class="fas fa-check"></i>Property Sold</em>
       </div>
-      <em class="sold-notification" data-property_id='2'><i class="far fa-check"></i>Property Sold</em>
-    </div>
-    <div class="listings" data-property_id='3'>
-      <div>
-        <img src="http://example.com" alt="image 3">
-        <p>Terraces</p>
-        <hr>
-        <p>Property Address</p>
-        <p>Property Price</p>
+      <div class="listings" data-property_id='5'>
+        <div>
+          <img src="http://example.com" alt="image 5">
+          <p>Mini-Flat</p>
+          <hr>
+          <p>Property Address</p>
+          <p>Property Price</p>
+        </div>
+        <div>
+          <span><i class="far fa-edit"></i>Edit</span>
+          <span><i class="far fa-trash"></i>Delete</span>
+          <span><i class="far fa-check-circle"></i>Mark as sold</span>
+        </div>
+        <em class="sold-notification" data-property_id='5'><i class="fas fa-check"></i>Property Sold</em>
       </div>
-      <div>
-        <span><i class="far fa-edit"></i>Edit</span>
-        <span><i class="far fa-trash"></i>Delete</span>
-        <span><i class="far fa-check-circle"></i>Mark as sold</span>
+      <div class="listings" data-property_id='6'>
+        <div>
+          <img src="http://example.com" alt="image 6">
+          <p>Mini-Flat</p>
+          <hr>
+          <p>Property Address</p>
+          <p>Property Price</p>
+        </div>
+        <div>
+          <span><i class="far fa-edit"></i>Edit</span>
+          <span><i class="far fa-trash"></i>Delete</span>
+          <span><i class="far fa-check-circle"></i>Mark as sold</span>
+        </div>
+        <em class="sold-notification" data-property_id='6'><i class="fas fa-check"></i>Property Sold</em>
       </div>
-      <em class="sold-notification" data-property_id='3'><i class="fas fa-check"></i>Property Sold</em>
-    </div>
-    <div class="listings" data-property_id='4'>
-      <div>
-        <img src="http://example.com" alt="image 4">
-        <p>Mini-Flat</p>
-        <hr>
-        <p>Property Address</p>
-        <p>Property Price</p>
+      <div class="listings" data-property_id='7'>
+        <div>
+          <img src="http://example.com" alt="image 7">
+          <p>Mini-Flat</p>
+          <hr>
+          <p>Property Address</p>
+          <p>Property Price</p>
+        </div>
+        <div>
+          <span><i class="far fa-edit"></i>Edit</span>
+          <span><i class="far fa-trash"></i>Delete</span>
+          <span><i class="far fa-check-circle"></i>Mark as sold</span>
+        </div>
+        <em class="sold-notification" data-property_id='7'><i class="fas fa-check"></i>Property Sold</em>
       </div>
+    </main>
+    <footer>
       <div>
-        <span><i class="far fa-edit"></i>Edit</span>
-        <span><i class="far fa-trash"></i>Delete</span>
-        <span><i class="far fa-check-circle"></i>Mark as sold</span>
+        <p class="login-footer">
+          &#169 2019 Property Pro Lite. All Rights Reserved
+        </p>
+        <div>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
       </div>
-      <em class="sold-notification" data-property_id='4'><i class="fas fa-check"></i>Property Sold</em>
-    </div>
-  </main>
-  <footer>
-    <div>
-      <p class="login-footer">
-        &#169 2019 Property Pro Lite. All Rights Reserved
-      </p>
-      <div>
-        <a href="#">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </div>
-    </div>
-  </footer>
+    </footer>
   </div>
   <script src="../js/pro-lite.js"></script>
 </body>

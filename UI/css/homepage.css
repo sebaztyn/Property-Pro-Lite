@@ -410,6 +410,8 @@ input {
 textarea {
   resize: none;
   outline: none;
+  /* border: none;
+  border-bottom: darkgrey solid 1px; */
 }
 
 .second-div>div>span {
@@ -677,5 +679,23 @@ footer>div>span {
     box-sizing: inherit;
     padding: 0;
     margin: 0;
+  }
+  .first-div {
+    width: 100vw;
+    min-height: 60vh;
+  }
+  .first-div>div {
+    width: 70%;
+    margin: 3em auto;
+  }
+  .second-div>div {
+    width: 70%;
+    margin: 3em auto;
+  }
+  .second-div>p:first-child {
+    margin: 1em;
+  }
+  textarea {
+    margin-top: 2em;
   }
 }

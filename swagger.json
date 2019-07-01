@@ -9,7 +9,7 @@
       "url": "https://property-pro-lite-andela.herokuapp.com/api-docs"
     }
   },
-  "host": "https://property-pro-lite-andela.herokuapp.com/",
+  "host": "property-pro-lite-andela.herokuapp.com",
   "basePath": "/api/v1",
   "securityDefinitions": {},
   "schemes": [

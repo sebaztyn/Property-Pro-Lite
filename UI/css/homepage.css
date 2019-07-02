@@ -91,21 +91,25 @@ header>.logo>a {
 }
 
 .navbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  max-height: 0;
+  transition: max-height 0.5s ease;
+  overflow: hidden;
   margin: 0;
-  list-style: none;
   background-color: var(--header-shade);
   color: var(--form-colors);
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.5em;
-  display: none;
   text-transform: uppercase
 }
 
 .navbar>li {
   list-style: none;
-  background-color: var(--header-shade);
-  display: flex;
+  /* background-color: var(--header-shade);
+  display: flex; */
 }
 
 .navbar>li>a {

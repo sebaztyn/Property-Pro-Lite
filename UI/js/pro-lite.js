@@ -25,10 +25,10 @@ if (hamburgerIcon) {
   hamburgerIcon.addEventListener('change', (event) => {
     event.preventDefault();
     if (hamburgerIcon.checked === true) {
-      navbar.style.display = 'flex';
+      navbar.style.maxHeight = '70vh';
     }
     else {
-      navbar.style.display = 'none';
+      navbar.style.maxHeight = '0';
     }
   });
 }
@@ -36,7 +36,7 @@ window.addEventListener('mouseup', (event) => {
   event.preventDefault();
   if (event.target !== hamburgerIcon && event.target.parentNode !== hamburgerIcon) {
     hamburgerIcon.checked = false;
-    navbar.style.display = 'none';
+    navbar.style.maxHeight = '0';
   }
 
 });

@@ -141,4 +141,80 @@ describe('Testing User SIGNUP/LOGIN and PASSWORD RESET validators', () => {
         return done();
       });
   });
+  it('should return an error status code 422 if the password is invalid - SIGNIN ENDPOINT', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'james@yahoo.com',
+        password: 'qwertyuiop1?'
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.status).to.equal(422);
+        expect((res.body)).to.be.an('object');
+        expect((res.body)).to.have.all.keys('status', 'error');
+        expect((res.body)).to.haveOwnProperty('status').that.equals('error');
+        expect((res.body)).to.haveOwnProperty('error').that.is.a('string');
+        expect((res.body.error)).to.be.a('string');
+        return done();
+      });
+  });
+  it('should return an error status code 422 if the password field is empty - SIGNIN ENDPOINT', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'james@yahoo.com',
+        password: ''
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.status).to.equal(422);
+        expect((res.body)).to.be.an('object');
+        expect((res.body)).to.have.all.keys('status', 'error');
+        expect((res.body)).to.haveOwnProperty('status').that.equals('error');
+        expect((res.body)).to.haveOwnProperty('error').that.is.a('string');
+        expect((res.body.error)).to.be.a('string');
+        return done();
+      });
+  });
+  it('should return an error status code 422 if the email is invalid - SIGNIN ENDPOINT', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'jame',
+        password: 'Qwertyuiop1?'
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.status).to.equal(422);
+        expect((res.body)).to.be.an('object');
+        expect((res.body)).to.have.all.keys('status', 'error');
+        expect((res.body)).to.haveOwnProperty('status').that.equals('error');
+        expect((res.body)).to.haveOwnProperty('error').that.is.a('string');
+        expect((res.body.error)).to.be.a('string');
+        return done();
+      });
+  });
+  it('should return an error status code 422 if the email field is empty - SIGNIN ENDPOINT', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'jame',
+        password: 'Qwertyuiop1?'
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.status).to.equal(422);
+        expect((res.body)).to.be.an('object');
+        expect((res.body)).to.have.all.keys('status', 'error');
+        expect((res.body)).to.haveOwnProperty('status').that.equals('error');
+        expect((res.body)).to.haveOwnProperty('error').that.is.a('string');
+        expect((res.body.error)).to.be.a('string');
+        return done();
+      });
+  });
 });

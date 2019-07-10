@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import debug from 'debug';
 import swaggerUi from 'swagger-ui-express';
-import authenticationRouter from './routes/authentication.routes';
+import authenticationRouter from './Routes/authentication.routes';
 import swaggerDocument from '../swagger.json';
 
 

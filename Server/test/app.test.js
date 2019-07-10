@@ -2,16 +2,14 @@ import 'dotenv/config';
 import path from 'path';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import debug from 'debug';
 import server from '../app';
 
-const logger = debug(`pro-lite-test`);
 
 const { expect } = chai;
 chai.use(chaiHttp);
 
 
-const testToken = null;
+let testToken = null;
 describe('TESTING AUTHENTICATION ENDPOINTS', () => {
   it('should welcome you to the Applications endpoint page', (done) => {
     chai.request(server)
@@ -34,6 +32,7 @@ describe('TESTING AUTHENTICATION ENDPOINTS', () => {
         address: 'Gwarinpa, Abuja'
       })
       .end((err, res) => {
+        testToken = res.body.data.token;
         if (err) return done(err);
         expect(res.body).to.haveOwnProperty('status');
         expect(res.status).to.equal(201);
@@ -73,6 +72,37 @@ describe('TESTING AUTHENTICATION ENDPOINTS', () => {
         expect((res.body.data.last_name)).to.be.a('string');
         expect((res.body.data.token)).to.be.a('string');
         expect((res.body.data.id)).to.be.a('number');
+        done();
+      });
+  });
+});
+
+describe('TESTING PROPERTY ENDPOINTS', () => {
+  it('should save property advert details provided by user', (done) => {
+    chai.request(server)
+      .post('/api/v1/property')
+      .set('Authorization', `Bearer ${testToken}`)
+      .field('price', 3500000)
+      .field('state', 'Lagos')
+      .field('city', 'Ikeja')
+      .field('address', 'Odalume, Ladipo, Lagos State')
+      .field('type', '2-bedroom')
+      .attach('image', path.join(`${__dirname}/images/colourful.jpg`))
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.body).to.have.keys('status', 'data');
+        expect(res.status).to.equal(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('success');
+        expect(res.body).to.have.ownProperty('data').to.be.an('object');
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.type).to.be.a('string');
+        expect(res.body.data.city).to.be.a('string');
+        expect(res.body.data.address).to.be.a('string');
+        expect(res.body.data.image_url).to.be.a('string');
+        expect(res.body.data.price).to.be.a('number');
         done();
       });
   });

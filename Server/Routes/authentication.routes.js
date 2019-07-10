@@ -1,4 +1,4 @@
-import { Router } from './node_modules/express';
+import { Router } from 'express';
 import { signupValidator, loginValidator } from '../middleware/validator';
 import userController from '../controllers/authentication.controller';
 

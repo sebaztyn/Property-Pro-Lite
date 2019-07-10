@@ -8,6 +8,7 @@ import swaggerDocument from '../swagger.json';
 
 const app = express();
 app.use(cors());
+app.options('*', cors());
 
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

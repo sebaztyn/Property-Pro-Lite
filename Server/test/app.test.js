@@ -2,8 +2,8 @@ import 'dotenv/config';
 import path from 'path';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import server from '../app';
 import debug from 'debug';
+import server from '../app';
 
 const logger = debug(`pro-lite-test`);
 
@@ -42,6 +42,31 @@ describe('TESTING AUTHENTICATION ENDPOINTS', () => {
         expect((res.body)).to.haveOwnProperty('status').that.equals('success');
         expect((res.body)).to.haveOwnProperty('status').that.is.a('string');
         expect((res.body)).to.haveOwnProperty('data').that.is.an('object');
+        expect((res.body.data)).to.be.an('object');
+        expect((res.body.data.email)).to.be.a('string');
+        expect((res.body.data.first_name)).to.be.a('string');
+        expect((res.body.data.last_name)).to.be.a('string');
+        expect((res.body.data.token)).to.be.a('string');
+        expect((res.body.data.id)).to.be.a('number');
+        done();
+      });
+  });
+  it('should allow user saved in the database access to the login page', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send({
+        email: 'sebastinocj@yahoo.com',
+        password: 'Qwertyuiop1!'
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.body).to.haveOwnProperty('status').that.is.a('string');
+        expect(res.body).to.haveOwnProperty('data').that.is.an('object');
+        expect((res.body)).to.have.all.keys('status', 'data');
+        expect((res.body)).to.haveOwnProperty('status').that.equals('success');
         expect((res.body.data)).to.be.an('object');
         expect((res.body.data.email)).to.be.a('string');
         expect((res.body.data.first_name)).to.be.a('string');

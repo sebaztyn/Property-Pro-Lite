@@ -1,7 +1,10 @@
 import '@babel/polyfill';
 import 'dotenv/config';
+import debug from 'debug';
 
 const { Pool } = require('pg');
+
+const logger = debug(`pro-lite-database`);
 
 
 let dbString = null;
@@ -20,9 +23,9 @@ const dropTables = async () => {
     await pool.query(userTables);
     await pool.query(propertyTable);
     await pool.query(flagTable);
-    await console.log('Dropped tables SUCCESSFULLY');
+    await logger('Dropped tables SUCCESSFULLY');
   } catch (err) {
-    console.log(err, 'Dropped tables operation FAILED');
+    logger(`${err}, Dropped tables operation FAILED`);
   }
 
 };
@@ -62,16 +65,16 @@ const createTables = async () => {
     await pool.query(users);
     await pool.query(property);
     await pool.query(flags);
-    await console.log('Tables created SUCCESSFULLY');
+    await logger('Tables created SUCCESSFULLY');
   } catch (err) {
-    console.log(err, 'Tables creation failed');
+    logger(`${err}, Tables creation failed`);
   }
 };
 
 const callTables = async () => {
   await dropTables();
   await createTables();
-  await console.log('database functions called successfully');
+  await logger('database functions called successfully');
   await process.exit(0);
 };
 

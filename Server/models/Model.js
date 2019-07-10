@@ -1,7 +1,9 @@
 import { Pool } from 'pg';
 import 'dotenv/config';
+import debug from 'debug';
 
 
+const logger = debug('model');
 export default class Model {
   constructor(table) {
     const dbString = (process.env.NODE_ENV === 'production') ? process.env.DATABASE_URL
@@ -13,9 +15,9 @@ export default class Model {
     });
     this.pool.connect()
       .then(() => {
-        console.log(`connected to the db - ${process.env.NODE_ENV} database --- Model`);
+        logger(`connected to the db - ${process.env.NODE_ENV} database --- Model`);
       })
-      .catch(err => console.log(err));
+      .catch(err => logger(err));
   }
 
   async select(columns, condition = '') {

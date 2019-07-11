@@ -3,13 +3,14 @@ import { cloudinaryConfig } from '../config/cloudinaryConfig';
 import { multerUploads } from '../middleware/multer';
 import propController from '../controllers/property.controller';
 import { checkToken } from '../middleware/tokenHandler';
-import { propertyValidator } from '../middleware/validator';
+import { propertyValidator, parameterValidator } from '../middleware/validator';
 
 const router = Router();
 
-const { postAdvert } = propController;
+const { postAdvert, updateAdvert } = propController;
 
 router.post('/', checkToken, cloudinaryConfig, multerUploads, propertyValidator, postAdvert);
+router.patch('/:propertyId', checkToken, cloudinaryConfig, multerUploads, parameterValidator, propertyValidator, updateAdvert);
 
 
 export default router;

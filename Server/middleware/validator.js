@@ -16,6 +16,9 @@ const propertySchema = Joi.object().keys({
   type: Joi.string().required(),
   address: Joi.string().required()
 });
+const parameterSchema = Joi.object().keys({
+  propertyId: Joi.number().integer().required()
+});
 const loginSchema = Joi.object().keys({
   password: Joi.required(),
   email: Joi.string().email().regex(/^\S+@\S+\.\S+$/).required()
@@ -71,5 +74,11 @@ const propertyValidator = (req, res, next) => {
     return next();
   });
 };
+const parameterValidator = (req, res, next) => Joi.validate(req.params, parameterSchema, (err, value) => {
+  if (err) return errorMessage(err, res);
+  return next();
+});
 
-export { propertyValidator, signupValidator, loginValidator };
+export {
+ propertyValidator, signupValidator, loginValidator, parameterValidator 
+};

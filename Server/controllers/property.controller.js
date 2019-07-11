@@ -98,4 +98,18 @@ export default class Property {
       return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }
+
+  static async getOneAdvert(req, res) {
+    try {
+      const id = Number(req.params.propertyId);
+      const columns = `p.id, p.status, p.type, p.state, p.city, p.address, p.price, p.created_on, p.image_url, u.email AS owner_email, u.phonenumber AS owner_phone_number`;
+      const otherTables = `users`; const alias1 = `p`; const alias2 = `u`;
+      const condition = `ON u.id=p.owner WHERE p.id = ${id}`;
+      const result = await propModel.selectAndJoin(columns, alias1, otherTables, alias2, condition);
+      if (!result.length) return serverResponse(res, 404, ...['status', 'error', 'error', 'No result found. Enter a valid value and try again.']);
+      return serverResponse(res, 200, ...['status', 'success', 'data', result[0]]);
+    } catch (err) {
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
+    }
+  }
 }

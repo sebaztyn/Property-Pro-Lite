@@ -19,6 +19,12 @@ const propertySchema = Joi.object().keys({
 const parameterSchema = Joi.object().keys({
   propertyId: Joi.number().integer().required()
 });
+const emailSchema = Joi.object().keys({
+  userEmail: Joi.string().email().regex(/^\S+@\S+\.\S+$/)
+});
+const paswwordResetSchema = Joi.object().keys({
+  newPassword: Joi.string().min(8).max(255)
+});
 const loginSchema = Joi.object().keys({
   password: Joi.required(),
   email: Joi.string().email().regex(/^\S+@\S+\.\S+$/).required()
@@ -49,13 +55,39 @@ const signupValidator = (req, res, next) => {
   }
   return serverResponse(res, 422, 'status', 'error', 'error', 'Invalid password length or values');
 };
+const passwordResetValidator = (req, res, next) => {
+  const { new_password: newPassword } = req.body;
+  const data = { newPassword };
+  const minMaxLength = /^[\s\S]{8,255}$/;
+  const uppercaseRegex = /[A-Z]/;
+  const lowercaseRegex = /[a-z]/;
+  const numberRegex = /[0-9]/;
+  const specialCharacterRegex = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
+  if (minMaxLength.test(newPassword) && uppercaseRegex.test(newPassword) && lowercaseRegex.test(newPassword) && numberRegex.test(newPassword) && specialCharacterRegex.test(newPassword)) {
+    return Joi.validate(data, paswwordResetSchema, (err, value) => {
+      if (err) {
+        return errorMessage(err, res);
+      }
+      return next();
+    });
+  }
+  return serverResponse(res, 422, 'status', 'error', 'error', 'Invalid password length or values');
+};
+const emailValidator = (req, res, next) => {
+  let { userEmail } = req.params;
+  userEmail = userEmail.toLowerCase().trim();
+  const data = { userEmail };
+  return Joi.validate(data, emailSchema, (err, value) => {
+    if (err) return errorMessage(err, res);
+    return next();
+  });
+};
 const loginValidator = (req, res, next) => {
   let { email, password } = req.body;
   email = email.toLowerCase().trim();
   password = password.trim();
-  req.body.email = email;
-  req.body.password = password;
-  return Joi.validate(req.body, loginSchema, (err, value) => {
+  const data = { password, email };
+  return Joi.validate(data, loginSchema, (err, value) => {
     if (err) {
       return errorMessage(err, res);
     }
@@ -80,5 +112,5 @@ const parameterValidator = (req, res, next) => Joi.validate(req.params, paramete
 });
 
 export {
- propertyValidator, signupValidator, loginValidator, parameterValidator 
+  propertyValidator, signupValidator, loginValidator, parameterValidator, passwordResetValidator, emailValidator
 };

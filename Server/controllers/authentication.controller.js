@@ -1,7 +1,7 @@
 
 import '@babel/polyfill';
 import { encryptPassword, decryptPassword } from '../helper/encrypt';
-import { serverError, userResponse, serverResponse } from '../helper/serverResponse';
+import { userResponse, serverResponse } from '../helper/serverResponse';
 import { generateToken } from '../middleware/tokenHandler';
 import Model from '../models/Model';
 
@@ -48,7 +48,28 @@ export default class UserController {
       };
       return userResponse(res, 200, finalResult);
     } catch (err) {
-      return serverError(res);
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
+    }
+  }
+
+  static async passwordReset(req, res) {
+    const { email } = req.tokenData;
+    try {
+      let { password, new_password: newPassword } = req.body;
+      const columns = `password AS user_password`;
+      const values = `WHERE email='${email}'`;
+      const result = await userObject.select(columns, values);
+      const decryptedPassword = await decryptPassword(password, result[0].user_password);
+      if (decryptedPassword) {
+        newPassword = await encryptPassword(newPassword);
+        const value = `password='${newPassword}'`;
+        const condition = `email = '${email}'`;
+        const passwordReset = await userObject.update(value, condition);
+        if (passwordReset) return serverResponse(res, 201, ...['status', 204, 'message', 'Password reset successful']);
+      }
+      return serverResponse(res, 422, ...['status', 'error', 'error', 'Password does not match saved password. Check current password and try again']);
+    } catch (err) {
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }
 }

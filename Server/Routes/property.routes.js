@@ -8,7 +8,7 @@ import { propertyValidator, parameterValidator } from '../middleware/validator';
 const router = Router();
 
 const {
-  postAdvert, updateAdvert, markSold, getAllAdverts, deleteAdvert
+  postAdvert, updateAdvert, markSold, getOneAdvert, getAllAdverts, deleteAdvert
 } = propController;
 
 router.post('/', checkToken, cloudinaryConfig, multerUploads, propertyValidator, postAdvert);
@@ -16,6 +16,7 @@ router.patch('/:propertyId', checkToken, cloudinaryConfig, multerUploads, parame
 router.patch('/:propertyId/sold', checkToken, parameterValidator, markSold);
 router.delete('/:propertyId', checkToken, parameterValidator, deleteAdvert);
 router.get('/', checkToken, getAllAdverts);
+router.get('/:propertyId', checkToken, parameterValidator, getOneAdvert);
 
 
 export default router;

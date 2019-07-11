@@ -1,11 +1,10 @@
 
 import debug from 'debug';
-import { serverError, serverResponse } from '../helper/serverResponse';
+import { serverResponse } from '../helper/serverResponse';
 import { imageUpload } from '../middleware/multer';
 import Model from '../models/Model';
 
 
-const logger = debug(`pro-lite-propsController`);
 const propModel = new Model('property');
 
 export default class Property {
@@ -27,7 +26,7 @@ export default class Property {
 
       return serverResponse(res, 201, ...['status', 'success', 'data', result]);
     } catch (err) {
-      return serverError(res);
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }
 
@@ -49,7 +48,7 @@ export default class Property {
       if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', `You have no property advert with ID ${propId}. Input a correct property ID and try again`]);
       return serverResponse(res, 200, ...['status', 'success', 'data', result]);
     } catch (err) {
-      return serverError(res);
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }
 
@@ -63,7 +62,7 @@ export default class Property {
       if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', `You have no property advert with ID ${id}. Input a correct property ID and try again`]);
       return serverResponse(res, 200, ...['status', 'success', 'data', result]);
     } catch (err) {
-      return serverError(res);
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }
 
@@ -76,21 +75,27 @@ export default class Property {
       if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', `Advert not found. Advert may have been removed`]);
       return serverResponse(res, 200, ...['status', 'success', 'data', { message: 'Advert deleted Successfully' }]);
     } catch (err) {
-      return serverError(res);
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }
 
   static async getAllAdverts(req, res) {
     try {
-      const columns = `p.id, p.status, p.type, p.state, p.city, p.address, p.price, p.created_on, p.image_url, u.email AS ownerEmail, u.phonenumber AS ownerPhoneNumber`;
+      const columns = `p.id, p.status, p.type, p.state, p.city, p.address, p.price, p.created_on, p.image_url, u.email AS owner_email, u.phonenumber AS owner_phone_number`;
       const otherTables = `users`;
-      const alias1 = `p`; const alias2 = `u`;
-      const condition = `ON u.id=p.owner`;
+      const alias1 = `p`; const alias2 = `u`; let condition = `ON u.id=p.owner`;
+      if (req.query.type) {
+        const { type } = req.query;
+        condition = `ON u.id=p.owner WHERE type = '${type}'`;
+        const queryResult = await propModel.selectAndJoin(columns, alias1, otherTables, alias2, condition);
+        if (queryResult.length) return serverResponse(res, 200, ...['status', 'success', 'data', queryResult]);
+        return serverResponse(res, 404, ...['status', 'error', 'error', `Enter a valid value and try again.`]);
+      }
       const result = await propModel.selectAndJoin(columns, alias1, otherTables, alias2, condition);
       if (!result.length) return serverResponse(res, 404, ...['status', 'error', 'error', `Not Advert found`]);
       return serverResponse(res, 200, ...['status', 'success', 'data', result]);
     } catch (err) {
-      return serverError(res);
+      return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }
 }

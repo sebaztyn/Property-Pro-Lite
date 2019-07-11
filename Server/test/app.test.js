@@ -109,6 +109,33 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
         done();
       });
   });
+  it('should save property advert details provided WITHOUT an IMAGE UPLOAD', (done) => {
+    chai.request(server)
+      .post('/api/v1/property')
+      .set('Authorization', `Bearer ${testToken}`)
+      .field('price', 3500000)
+      .field('state', 'Lagos')
+      .field('city', 'Ikeja')
+      .field('address', 'Odalume, Ladipo, Lagos State')
+      .field('type', '2-bedroom')
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.body).to.have.keys('status', 'data');
+        expect(res.status).to.equal(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('success');
+        expect(res.body).to.have.ownProperty('data').to.be.an('object');
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.type).to.be.a('string');
+        expect(res.body.data.city).to.be.a('string');
+        expect(res.body.data.address).to.be.a('string');
+        expect(res.body.data.image_url).to.be.a('string');
+        expect(res.body.data.price).to.be.a('number');
+        done();
+      });
+  });
   it('should update property advert details provided by user', (done) => {
     chai.request(server)
       .patch('/api/v1/property/1')
@@ -178,8 +205,32 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
         expect(res.body.data[0].address).to.be.a('string');
         expect(res.body.data[0].image_url).to.be.a('string');
         expect(res.body.data[0].price).to.be.a('number');
-        expect(res.body.data[0].owneremail).to.be.a('string');
-        expect(res.body.data[0].ownerphonenumber).to.be.a('string');
+        expect(res.body.data[0].owner_email).to.be.a('string');
+        expect(res.body.data[0].owner_phone_number).to.be.a('string');
+        done();
+      });
+  });
+  it('should get ALL PROPERTIES of a SPECIFIC PROPERTY TYPE posted on the app', (done) => {
+    chai.request(server)
+      .get('/api/v1/property?type=3-bedroom')
+      .set('Authorization', `Bearer ${testToken}`)
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.body).to.have.keys('status', 'data');
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('success');
+        expect(res.body).to.have.ownProperty('data').to.be.an('array');
+        expect(res.body.data[0].id).to.be.a('number');
+        expect(res.body.data[0].status).to.be.a('string');
+        expect(res.body.data[0].state).to.be.a('string');
+        expect(res.body.data[0].type).to.be.a('string');
+        expect(res.body.data[0].city).to.be.a('string');
+        expect(res.body.data[0].address).to.be.a('string');
+        expect(res.body.data[0].image_url).to.be.a('string');
+        expect(res.body.data[0].price).to.be.a('number');
+        expect(res.body.data[0].owner_email).to.be.a('string');
+        expect(res.body.data[0].owner_phone_number).to.be.a('string');
         done();
       });
   });

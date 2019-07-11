@@ -52,4 +52,18 @@ export default class Property {
       return serverError(res);
     }
   }
+
+  static async markSold(req, res) {
+    try {
+      const id = Number(req.params.propertyId);
+      const { id: userID } = req.tokenData;
+      const values = `status='sold'`;
+      const condition = `owner = ${userID} AND id =${id}`;
+      const result = await propModel.update(values, condition);
+      if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', `You have no property advert with ID ${id}. Input a correct property ID and try again`]);
+      return serverResponse(res, 200, ...['status', 'success', 'data', result]);
+    } catch (err) {
+      return serverError(res);
+    }
+  }
 }

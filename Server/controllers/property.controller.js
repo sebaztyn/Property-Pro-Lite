@@ -27,7 +27,28 @@ export default class Property {
 
       return serverResponse(res, 201, ...['status', 'success', 'data', result]);
     } catch (err) {
-      logger(`${err}`);
+      return serverError(res);
+    }
+  }
+
+  static async updateAdvert(req, res) {
+    try {
+      const propId = Number(req.params.propertyId);
+      const { id } = req.tokenData;
+      const {
+        state, city, address, type, price
+      } = req.body;
+      let fileUrl = null;
+      if (req.file) {
+        const imageUrl = await imageUpload(req);
+        fileUrl = (imageUrl) || 'https://dummytesturl.com';
+      }
+      const values = `state='${state}', city='${city}', type='${type}', address='${address}', price= ${price}, image_url='${fileUrl}'`;
+      const condition = `owner = ${id} AND id =${propId}`;
+      const result = await propModel.update(values, condition);
+      if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', `You have no property advert with ID ${propId}. Input a correct property ID and try again`]);
+      return serverResponse(res, 200, ...['status', 'success', 'data', result]);
+    } catch (err) {
       return serverError(res);
     }
   }

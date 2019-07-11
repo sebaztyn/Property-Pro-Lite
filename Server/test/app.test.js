@@ -2,7 +2,10 @@ import 'dotenv/config';
 import path from 'path';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import debug from 'debug';
 import server from '../app';
+
+const logger = debug(`pro-lite-test`);
 
 
 const { expect } = chai;
@@ -92,6 +95,34 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
         if (err) done(err);
         expect(res.body).to.have.keys('status', 'data');
         expect(res.status).to.equal(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.ownProperty('status').that.equals('success');
+        expect(res.body).to.have.ownProperty('data').to.be.an('object');
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.type).to.be.a('string');
+        expect(res.body.data.city).to.be.a('string');
+        expect(res.body.data.address).to.be.a('string');
+        expect(res.body.data.image_url).to.be.a('string');
+        expect(res.body.data.price).to.be.a('number');
+        done();
+      });
+  });
+  it('should update property advert details provided by user', (done) => {
+    chai.request(server)
+      .patch('/api/v1/property/1')
+      .set('Authorization', `Bearer ${testToken}`)
+      .field('price', 1000000)
+      .field('state', 'Kwara')
+      .field('city', 'Ilorin')
+      .field('address', '39, Balogun Fulani Road, Ilorin')
+      .field('type', '3-bedroom')
+      .attach('image', path.join(`${__dirname}/images/colourful.jpg`))
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.body).to.have.keys('status', 'data');
+        expect(res.status).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.ownProperty('status').that.equals('success');
         expect(res.body).to.have.ownProperty('data').to.be.an('object');

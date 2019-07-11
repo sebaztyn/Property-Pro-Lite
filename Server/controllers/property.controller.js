@@ -79,4 +79,18 @@ export default class Property {
       return serverError(res);
     }
   }
+
+  static async getAllAdverts(req, res) {
+    try {
+      const columns = `p.id, p.status, p.type, p.state, p.city, p.address, p.price, p.created_on, p.image_url, u.email AS ownerEmail, u.phonenumber AS ownerPhoneNumber`;
+      const otherTables = `users`;
+      const alias1 = `p`; const alias2 = `u`;
+      const condition = `ON u.id=p.owner`;
+      const result = await propModel.selectAndJoin(columns, alias1, otherTables, alias2, condition);
+      if (!result.length) return serverResponse(res, 404, ...['status', 'error', 'error', `Not Advert found`]);
+      return serverResponse(res, 200, ...['status', 'success', 'data', result]);
+    } catch (err) {
+      return serverError(res);
+    }
+  }
 }

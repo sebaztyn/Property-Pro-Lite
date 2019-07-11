@@ -66,4 +66,17 @@ export default class Property {
       return serverError(res);
     }
   }
+
+  static async deleteAdvert(req, res) {
+    try {
+      const id = Number(req.params.propertyId);
+      const { id: userID } = req.tokenData;
+      const condition = `owner = ${userID} AND id =${id}`;
+      const result = await propModel.delete(condition);
+      if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', `Advert not found. Advert may have been removed`]);
+      return serverResponse(res, 200, ...['status', 'success', 'data', { message: 'Advert deleted Successfully' }]);
+    } catch (err) {
+      return serverError(res);
+    }
+  }
 }

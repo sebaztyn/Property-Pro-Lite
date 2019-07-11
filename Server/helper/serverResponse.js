@@ -1,8 +1,4 @@
 
-const serverError = response => response.status(500).json({
-  status: 'error',
-  error: "Something went wrong. Try again later"
-});
 const serverResponse = (response, statusValue, ...[statusKey, statusResult, dataKey, dataValue]) => response.status(statusValue).json({
   [statusKey]: statusResult,
   [dataKey]: dataValue
@@ -16,6 +12,4 @@ const userResponse = (response, statusValue, userData) => response.status(status
   data: userData
 });
 
-export {
-  userResponse, authResponse, serverResponse, serverError
-};
+export { userResponse, authResponse, serverResponse };

@@ -269,3 +269,43 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
       });
   });
 });
+
+describe('TESTING PASSWORD RESET', () => {
+  it('should allow user saved in the database access to the login page', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/sebastinocj@yahoo.com/reset_password')
+      .set('Authorization', `Bearer ${testToken}`)
+      .send({
+        password: 'Qwertyuiop1!',
+        new_password: 'Qwertyuiop1?'
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.status).to.equal(201);
+        expect((res.body)).to.be.an('object');
+        expect((res.body)).to.have.all.keys('status', 'message');
+        expect((res.body)).to.haveOwnProperty('status').that.equals(204);
+        expect((res.body)).to.haveOwnProperty('status').that.is.a('number');
+        expect((res.body)).to.haveOwnProperty('message').that.is.a('string');
+        expect((res.body.message)).to.be.a('string');
+        done();
+      });
+  });
+  it('should send an email to user if only email is provided', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/sebastinocj@yahoo.com/reset_password')
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body).to.haveOwnProperty('status');
+        expect(res.status).to.equal(201);
+        expect((res.body)).to.be.an('object');
+        expect((res.body)).to.have.all.keys('status', 'message');
+        expect((res.body)).to.haveOwnProperty('status').that.equals(204);
+        expect((res.body)).to.haveOwnProperty('status').that.is.a('number');
+        expect((res.body)).to.haveOwnProperty('message').that.is.a('string');
+        expect((res.body.message)).to.be.a('string');
+        done();
+      });
+  });
+});

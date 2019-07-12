@@ -48,6 +48,7 @@ export default class Property {
       if (!result) return serverResponse(res, 404, ...['status', 'error', 'error', `You have no property advert with ID ${propId}. Input a correct property ID and try again`]);
       return serverResponse(res, 200, ...['status', 'success', 'data', result]);
     } catch (err) {
+      console.log(err);
       return serverResponse(res, 500, ...['status', 'error', 'error', `Something went wrong. Try again later`]);
     }
   }

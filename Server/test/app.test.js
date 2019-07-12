@@ -295,7 +295,7 @@ describe('TESTING PROPERTY ENDPOINTS', () => {
 });
 
 describe('TESTING PASSWORD RESET', () => {
-  it('should allow user saved in the database access to the login page', (done) => {
+  it('should save a new password set by user and return a confirmatory message', (done) => {
     chai.request(server)
       .post('/api/v1/auth/sebastinocj@yahoo.com/reset_password')
       .set('Authorization', `Bearer ${testToken}`)

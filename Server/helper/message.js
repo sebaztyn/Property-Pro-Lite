@@ -44,7 +44,7 @@ const emailMessage = (firstName, newPassword) => `
       <div>
         <p>Good day ${firstName},</p><br>
         <div class="message">
-          <p>Your new password is ${newPassword}</p>
+          <p>Your new password is <strong><em>${newPassword}</em></strong></p>
           <p>
             Kindly sign in with this advised password and change the password to a preferred password of your choice.
           </p>
@@ -54,7 +54,6 @@ const emailMessage = (firstName, newPassword) => `
       </div>
   </div>
 </body>
-
 </html>
 `;
 const sendMail = async (res, firstName, newPassword, email) => {

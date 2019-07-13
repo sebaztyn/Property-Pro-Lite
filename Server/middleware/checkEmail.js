@@ -1,4 +1,5 @@
 import '@babel/polyfill';
+import { validationResult } from 'express-validator';
 import { serverResponse } from '../helper/serverResponse';
 import Model from '../models/Model';
 import sendMail from '../helper/message';

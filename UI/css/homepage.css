@@ -311,13 +311,13 @@ a {
   overflow: hidden;
 }
 
-.main-form>div:first-child {
+/* .main-form>div:first-child {
   width: 300vw;
   height: inherit;
   border-radius: 0.2em;
   display: inline-flex;
   overflow-x: hidden;
-}
+} */
 
 .first-div {
   width: 100vw;
@@ -339,6 +339,8 @@ a {
   opacity: 0;
   left: 100vw;
   transition: opacity 0.7s linear;
+  justify-content: center;
+  align-items: center;
 }
 
 .third-div {
@@ -414,8 +416,16 @@ input {
 }
 
 textarea {
+  margin-top: 1em;
   resize: none;
   outline: none;
+  border: solid 1px var(--header-color);
+  border-radius: 0.2em;
+}
+
+textarea::placeholder {
+  padding-left: 1em;
+  padding-top: 0.2em;
 }
 
 .second-div>div>span {
@@ -587,6 +597,22 @@ footer>div>span {
   padding: 0.5em;
 }
 
+@media(orientation: portrait) and (max-width: 823px) {
+  .first-div {
+    height: inherit;
+    margin-top: 7em;
+  }
+  .second-div {
+    margin-top: 7em;
+  }
+  .second-div>div {
+    width: 90%
+  }
+  textarea {
+    height: 40%
+  }
+}
+
 @media(min-width: 30em) {
   body {
     padding: 0;
@@ -705,5 +731,11 @@ footer>div>span {
   }
   textarea {
     margin-top: 2em;
+  }
+}
+
+@media(min-width: 1024px) {
+  textarea {
+    height: 40%;
   }
 }

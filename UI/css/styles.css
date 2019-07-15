@@ -40,7 +40,7 @@
 }
 
 .rent-card {
-  height: 65vh;
+  min-height: 20vh;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -49,7 +49,7 @@
 }
 
 .sale-card {
-  height: 65vh;
+  min-height: 20vh;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -58,7 +58,7 @@
 }
 
 .short-let-card {
-  height: 65vh;
+  min-height: 20vh;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -79,8 +79,9 @@
 
 .display-rent>div:first-child {
   width: 98%;
-  height: 55%;
+  height: 200px;
   margin: 0 auto;
+  padding-top: 0.5em;
 }
 
 .display-rent>div:first-child>img {
@@ -101,8 +102,9 @@
 
 .display-sale>div:first-child {
   width: 98%;
-  height: 55%;
+  height: 200px;
   margin: 0 auto;
+  padding-top: 0.5em;
 }
 
 .display-sale>div:first-child>img {
@@ -123,8 +125,9 @@
 
 .display-let>div:first-child {
   width: 98%;
-  height: 55%;
+  height: 200px;
   margin: 0 auto;
+  padding-top: 0.5em;
 }
 
 .display-let>div:first-child>img {
@@ -153,7 +156,6 @@
 }
 
 .view-property {
-  margin: 0.5em;
   padding: 0.5em 1.5em;
   outline: none;
   border: none;
@@ -162,7 +164,7 @@
   transition: background 0.3s linear, border 0.3s linear, color 0.3s linear;
   min-width: 0;
   width: 90%;
-  margin: auto;
+  margin: 1em auto;
   border-radius: 0.2em;
 }
 
@@ -175,12 +177,12 @@
 }
 
 .property-detail-card {
-  height: 30%;
   padding: 0.2em;
+  padding-left: 1em;
   display: flex;
   flex-direction: column;
   font-size: 1.8rem;
-  /* line-height: 1.5 */
+  text-align: start;
 }
 
 .property-detail-card>p:first-child {
@@ -339,17 +341,14 @@ section>h4 {
   .display-rent {
     width: 49%;
     margin: 0 2% 0 0;
-    padding-bottom: 1em
   }
   .display-sale {
     width: 49%;
     margin: 0 2% 0 0;
-    padding-bottom: 1em
   }
   .display-let {
     width: 49%;
     margin: 0 2% 0 0;
-    padding-bottom: 1em
   }
   #search-form>select {
     flex-basis: 30%;

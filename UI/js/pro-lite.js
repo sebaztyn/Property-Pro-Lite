@@ -131,14 +131,14 @@ if (listPropertyLink) {
 if (markSold) {
   markSold.addEventListener('click', (event) => {
     if (event.target.matches('.mark-sold')) {
-      return event.target.parentElement.nextElementSibling.style.opacity = 1;
+      return event.target.parentElement.nextElementSibling.textContent = 'Status: Sold';
     }
   });
 }
 if (markSold) {
   markSold.addEventListener('click', (event) => {
     if (event.target.matches('.mark-sold>.fa-check-circle')) {
-      return event.target.parentElement.parentElement.nextElementSibling.style.opacity = 1;
+      return event.target.parentElement.parentElement.nextElementSibling.textContent = 'Status: Sold';
     }
   });
 }

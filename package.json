@@ -8,7 +8,7 @@
     "clean": "rm -rf build && mkdir build",
     "copy-swagger": "cp -R swagger.yaml build",
     "start": "node build/app.js",
-    "start-dev": "set DEBUG=pro-lite-* &&nodemon --exec babel-node Server/app.js",
+    "dev": "set DEBUG=pro-lite-* &&nodemon --exec babel-node Server/app.js",
     "create-test-tables": "set DEBUG=pro-lite-* &&babel-node  Server/migration/db.js",
     "create-production-tables": "node build/migration/db.js",
     "test": "set DEBUG=pro-lite-* &&cross-env NODE_ENV=test npm run create-test-tables&& cross-env NODE_ENV=test nyc _mocha Server/test/*.test.js --reporter=spec --recursive --require @babel/register --timeout 10000 --exit",

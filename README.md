@@ -32,6 +32,7 @@ This Project was created with:
 - Travis CI - A continuous integration and testing platform
 - Coveralls - A continuous integration and testing platform
 - Code Climate - A continuous integration and testing platform
+- PostgreSQL - A relational database management system
 
 #### Tools and Modules
 The tools and modules employed in this project are:
@@ -41,9 +42,15 @@ The tools and modules employed in this project are:
 - A test suite e.g Mocha and Chai
 - JSON Web Token
 - Multer
-- swaggerUI
 - bcryptjs
-- JOI validation module
+- Node pg
+- Express Validator Module
+- Nodemailer
+- Swagger-ui-express
+- debug
+- datauri
+- eslint
+- babel
 
 #### Development Setup
 To start this project, install the required modules and dependencies locally using npm:
@@ -102,6 +109,7 @@ Signing into the property-pro-lite platform will require a login details as:
 - POST https://property-pro-lite-andela.herokuapp.com/api/v1/auth/signup - A visit to endpoint creates a new user and returns a signup token.
 
 - POST https://property-pro-lite-andela.herokuapp.com/api/v1/auth/signin - A visit to endpoint allows an already registered user to login on providing matching credientials with what is saved in the database.
+- POST https://property-pro-lite-andela.herokuapp.com/api/v1/auth/abc@domain.com/reset_password - A visit to endpoint allows an already registered user with email ```abc@domain.com``` to reset password or generate a new password.
 
 
 #### Running Tests
@@ -116,7 +124,7 @@ Tests are run by calling ```npm test``` after installing and setting up testing 
     √ It allow user saved in the database access to the login page (655ms)
 ```
 #### Credits
-I learnt cloudinary usuage and file upload in express js reading the article from [Okpukoro Joe](https://medium.com/@joeokpus/uploading-images-to-cloudinary-using-multer-and-expressjs-f0b9a4e14c54)
+I learnt cloudinary usage and file upload in express js reading the article from [Okpukoro Joe](https://medium.com/@joeokpus/uploading-images-to-cloudinary-using-multer-and-expressjs-f0b9a4e14c54)
 
 #### Contributor(s)
 - Chima Ekeneme Sebastine

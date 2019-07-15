@@ -6,7 +6,7 @@
     "description": "Property Pro Lite is a platform where people can create and/or search properties for sale or rent.",
     "contact": {
       "name": "Propert-Pro Lite API Documentation",
-      "url": "https://property-pro-lite-andela.herokuapp.com/api-docs"
+      "url": "https://sebaztyn.github.io/Property-Pro-Lite/UI/html/index.html"
     }
   },
   "host": "property-pro-lite-andela.herokuapp.com",
@@ -47,7 +47,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "",
             "headers": {}
           }
@@ -84,6 +84,51 @@
           "200": {
             "description": "",
             "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/{userEmail}/reset_password": {
+      "post": {
+        "description": "This an endpoint that generates or resets user's password",
+        "summary": "Password reset endpoint",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "PasswordReset",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userEmail",
+            "in": "path",
+            "description": "Email of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/password-reset-Model"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
           }
         }
       }
@@ -156,7 +201,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "",
             "headers": {}
           }
@@ -172,6 +217,15 @@
         "deprecated": false,
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -199,6 +253,13 @@
             "name": "type",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
           }
         ],
         "responses": {
@@ -209,7 +270,44 @@
         }
       }
     },
-    "/property/2": {
+    "/property/{propertyId}/sold": {
+      "patch": {
+        "description": "Endpoint that implements the conversion of a property status to sold.",
+        "summary": "Mark Property as sold",
+        "tags": [
+          "Mark property as sold"
+        ],
+        "operationId": "Property4SoldPatch",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "ID of property advert",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/property/{propertyId}": {
       "patch": {
         "description": "An endpoint for updating a property advert",
         "summary": "Update Property Advert",
@@ -225,6 +323,14 @@
           "multipart/form-data"
         ],
         "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "ID of property advert",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
           {
             "name": "Authorization",
             "in": "header",
@@ -282,38 +388,7 @@
             "headers": {}
           }
         }
-      }
-    },
-    "/property/4/sold": {
-      "patch": {
-        "description": "Endpoint that implements the conversion of a property status to sold.",
-        "summary": "Mark Property as sold",
-        "tags": [
-          "Mark property as sold"
-        ],
-        "operationId": "Property4SoldPatch",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "default": "Bearer {token}",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        }
-      }
-    },
-    "/property/1": {
+      },
       "delete": {
         "description": "An endpoint that allows user(Agent) to delete advert posted by him or her",
         "summary": "Delete Advert",
@@ -326,6 +401,14 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "ID of property advert",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
           {
             "name": "Authorization",
             "in": "header",
@@ -354,9 +437,17 @@
         ],
         "parameters": [
           {
+            "name": "propertyId",
+            "in": "path",
+            "description": "ID of property advert",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
             "name": "Authorization",
             "in": "header",
-            "required": false,
+            "required": true,
             "default": "Bearer {token}",
             "type": "string"
           }
@@ -428,12 +519,24 @@
       },
       "required": [
         "email",
-        "first_name",
-        "last_name",
-        "password",
-        "phoneNumber",
-        "address"
+        "password"
       ]
+    },
+    "password-reset-Model": {
+      "title": "Password Reset Request",
+      "example": {
+        "password": "Qwertyuiop1!",
+        "new_password": "Qwertyuiop1!"
+      },
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "new_password": {
+          "type": "string"
+        }
+      }
     },
     "Property-Model": {
       "title": "Post Property Request",

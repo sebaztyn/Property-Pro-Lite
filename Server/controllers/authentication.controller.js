@@ -25,7 +25,7 @@ export default class UserController {
       };
       return userResponse(res, 201, displayResult);
     } catch (err) {
-      return serverResponse(res, 500, ...['status', 'error', 'error', `${err.message}`]);
+      return serverResponse(res, 500, ...['status', 'error', 'error', 'Email already exists.']);
     }
   }
 

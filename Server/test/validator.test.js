@@ -85,7 +85,7 @@ describe('Testing User SIGNUP/LOGIN and PASSWORD RESET validators', () => {
         expect((res.body)).to.have.all.keys('status', 'error');
         expect((res.body)).to.haveOwnProperty('status').that.equals('error');
         expect((res.body)).to.haveOwnProperty('error').that.is.a('string');
-        expect((res.body)).to.haveOwnProperty('error').that.equals('duplicate key value violates unique constraint "users_email_key"');
+        expect((res.body)).to.haveOwnProperty('error').that.equals('Email already exists.');
         expect((res.body.error)).to.be.a('string');
         return done();
       });

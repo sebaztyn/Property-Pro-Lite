@@ -104,100 +104,98 @@
   </ul>
 
   <main class="main-form">
-    <form method="POST" enctype="multipart/form-data">
-      <div class="first-div">
-        <p>Address of property</p>
-        <div>
-          <span>List Type</span>
-          <div class="list-type">
-            Sale<input type="radio" name="list-type" value="sale">
-            Rent<input type="radio" name="list-type" value="rent">
-          </div>
-          <select name="property-type">
-            <option value="" selected disabled>Choose Property Category</option>
-            <option value="offices">offices</option>
-            <option value="shops">shops</option>
-            <option value="warehouses">warehouses</option>
-            <option value="commercial-property">commercial property</option>
-            <option value="flats/apartments">flats/apartments</option>
-            <option value="flat-blocks">flat-blocks</option>
-            <option value="mini-flat">mini-flat</option>
-            <option value="rooms/boys-quarters">rooms/boys-quarters</option>
-            <option value="duplex">duplex</option>
-            <option value="terraces">terraces</option>
-            <option value="townhouses">townhouses</option>
-            <option value="land">land</option>
-          </select>
-          <select name="state">
-            <option value="" selected disabled>Choose Property State</option>
-            <option value="abia">Abia</option>
-            <option value="adamawa">Adamawa</option>
-            <option value="akwa-ibom">Akwa-Ibom</option>
-            <option value="anambra">Anambra</option>
-            <option value="bauchi">Bauchi</option>
-            <option value="bayelsa">Bayelsa</option>
-            <option value="benue">Benue</option>
-          </select>
-          <select name="city">
-            <option value="" selected disabled>Choose Property City</option>
-            <option value="abia">Ikeja</option>
-            <option value="adamawa">Gwarinpa</option>
-            <option value="akwa-ibom">Asokoro</option>
-            <option value="anambra">Lekki</option>
-            <option value="bauchi">Maitama</option>
-            <option value="bayelsa">awka</option>
-            <option value="benue">Asaba</option>
-          </select>
-          <input type="text" name="address" id="" placeholder="Enter street address">
+    <div class="first-div">
+      <p>Address of property</p>
+      <div>
+        <span>List Type</span>
+        <div class="list-type">
+          Sale<input type="radio" name="list-type" value="sale">
+          Rent<input type="radio" name="list-type" value="rent">
         </div>
+        <select name="property-type">
+          <option value="" selected disabled>Choose Property Category</option>
+          <option value="offices">offices</option>
+          <option value="shops">shops</option>
+          <option value="warehouses">warehouses</option>
+          <option value="commercial-property">commercial property</option>
+          <option value="flats/apartments">flats/apartments</option>
+          <option value="flat-blocks">flat-blocks</option>
+          <option value="mini-flat">mini-flat</option>
+          <option value="rooms/boys-quarters">rooms/boys-quarters</option>
+          <option value="duplex">duplex</option>
+          <option value="terraces">terraces</option>
+          <option value="townhouses">townhouses</option>
+          <option value="land">land</option>
+        </select>
+        <select name="state">
+          <option value="" selected disabled>Choose Property State</option>
+          <option value="abia">Abia</option>
+          <option value="adamawa">Adamawa</option>
+          <option value="akwa-ibom">Akwa-Ibom</option>
+          <option value="anambra">Anambra</option>
+          <option value="bauchi">Bauchi</option>
+          <option value="bayelsa">Bayelsa</option>
+          <option value="benue">Benue</option>
+        </select>
+        <select name="city">
+          <option value="" selected disabled>Choose Property City</option>
+          <option value="abia">Ikeja</option>
+          <option value="adamawa">Gwarinpa</option>
+          <option value="akwa-ibom">Asokoro</option>
+          <option value="anambra">Lekki</option>
+          <option value="bauchi">Maitama</option>
+          <option value="bayelsa">awka</option>
+          <option value="benue">Asaba</option>
+        </select>
+        <input type="text" name="address" id="" placeholder="Enter street address">
       </div>
-      <div class="second-div">
-        <p>Property Description</p>
-        <div>
-          <span>Number of Bedrooms</span>
-          <select name="bedroom">
-            <option value="" selected disabled>Choose number of Bedrooms</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="more">more</option>
-          </select>
-          <span>Number of Toilets</span>
-          <select name="toilet">
-            <option value="" selected disabled>Choose number of Toilets</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="more">more</option>
-          </select>
-          <span>Number of Bathrooms</span>
-          <select name="bathroom">
-            <option value="" selected disabled>Choose number of Bathroom</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="more">more</option>
-          </select>
-          <span>Price per year</span>
-          <input placeholder="Enter figure" type="number">
-          <textarea placeholder="Brief description of property"></textarea>
-        </div>
+    </div>
+    <div class="second-div">
+      <p>Property Description</p>
+      <div>
+        <span>Number of Bedrooms</span>
+        <select name="bedroom">
+          <option value="" selected disabled>Choose number of Bedrooms</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="more">more</option>
+        </select>
+        <span>Number of Toilets</span>
+        <select name="toilet">
+          <option value="" selected disabled>Choose number of Toilets</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="more">more</option>
+        </select>
+        <span>Number of Bathrooms</span>
+        <select name="bathroom">
+          <option value="" selected disabled>Choose number of Bathroom</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="more">more</option>
+        </select>
+        <span>Price per year</span>
+        <input placeholder="Enter figure" type="number">
+        <textarea placeholder="Brief description of property"></textarea>
       </div>
-      <div class="third-div">
-        <p>Property Image Upload</p>
-        <input type="file" accept=".jpg, .jpeg, .png"><br>
-        <input type="submit" value="Upload" formenctype="multipart/form-data">
-      </div>
-    </form>
+    </div>
+    <div class="third-div">
+      <p>Property Image Upload</p>
+      <input type="file" accept=".jpg, .jpeg, .png"><br>
+      <input type="submit" value="Upload" formenctype="multipart/form-data">
+    </div>
     <div class="buttons-div"><span>Previous</span><span class="next-button">Next</span><span
         class="main-form-submit-button">Submit</span>
     </div>

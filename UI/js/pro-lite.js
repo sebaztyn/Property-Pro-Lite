@@ -130,8 +130,8 @@ if (listPropertyLink) {
 }
 if (myListBody) {
   myListBody.addEventListener('click', (event) => {
-    if (event.target.matches('.listings>div:nth-child(2)>span:first-child'))
-    location.href = 'listproperty.html';
+    if (event.target.matches('.listings>div:nth-child(2)>span:first-child') || event.target.matches('.fa-edit'))
+    { location.href = 'listproperty.html'; }
   });
 }
 if (myListBody) {
@@ -150,8 +150,15 @@ if (myListBody) {
 }
 if (myListBody) {
   myListBody.addEventListener('click', (event) => {
-    if (event.target.matches('.listings>div:nth-child(2)>span:nth-child(2)')) {
+    if (event.target.matches('.listings>div:nth-child(2)>span:nth-child(2)') || event.target.matches('.fa-trash')) {
       event.target.parentElement.parentElement.style.display = 'none';
+    }
+  });
+}
+if (myListBody) {
+  myListBody.addEventListener('click', (event) => {
+    if (event.target.matches('.fa-trash')) {
+      event.target.parentElement.parentElement.parentElement.style.display = 'none';
     }
   });
 }

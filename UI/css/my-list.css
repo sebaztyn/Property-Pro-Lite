@@ -65,7 +65,7 @@ p {
 
 .listings>div:nth-child(2)>span {
   text-align: center;
-  padding: 0.5em 1.5em;
+  padding: 0.5em;
   cursor: pointer;
   border: 1px solid gray;
   margin: 0.3em;

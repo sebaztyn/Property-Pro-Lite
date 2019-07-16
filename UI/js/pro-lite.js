@@ -18,7 +18,7 @@ const signUpButton = document.querySelector('#signup-button');
 const loginButton = document.querySelector('.login-submit-button');
 const propertyListContainer = document.querySelector('.property-display-container');
 const mainFormSubmitButton = document.querySelector('.main-form-submit-button');
-const markSold = document.querySelector('.my-list-body');
+const myListBody = document.querySelector('.my-list-body');
 
 
 if (hamburgerIcon) {
@@ -128,22 +128,28 @@ if (listPropertyLink) {
     location.href = 'listproperty.html';
   });
 }
-if (markSold) {
-  markSold.addEventListener('click', (event) => {
+if (myListBody) {
+  myListBody.addEventListener('click', (event) => {
+    if (event.target.matches('.listings>div:nth-child(2)>span:first-child'))
+    location.href = 'listproperty.html';
+  });
+}
+if (myListBody) {
+  myListBody.addEventListener('click', (event) => {
     if (event.target.matches('.mark-sold')) {
       return event.target.parentElement.nextElementSibling.textContent = 'Status: Sold';
     }
   });
 }
-if (markSold) {
-  markSold.addEventListener('click', (event) => {
+if (myListBody) {
+  myListBody.addEventListener('click', (event) => {
     if (event.target.matches('.mark-sold>.fa-check-circle')) {
       return event.target.parentElement.parentElement.nextElementSibling.textContent = 'Status: Sold';
     }
   });
 }
-if (markSold) {
-  markSold.addEventListener('click', (event) => {
+if (myListBody) {
+  myListBody.addEventListener('click', (event) => {
     if (event.target.matches('.listings>div:nth-child(2)>span:nth-child(2)')) {
       event.target.parentElement.parentElement.style.display = 'none';
     }
